@@ -19,7 +19,23 @@ Make sure MongoDB is started before you start your Node.js server as follows:
 
 node server.js
 
+Step 3: Testing the API in your Browser :
+=========================================
 
+* Retrieve all users
+http://localhost:3000/users
+
+* Retrieve all users whose name includes the letter "h"
+http://localhost:3000/users?name=h
+
+* Retrieve user with id == 1
+http://localhost:3000/users/1
+
+* Retrieve user with login == "haykel"
+http://localhost:3000/users/login/haykel
+
+* Retrieve user with mail == "haykel.ouhichi@esprit.tn"
+http://localhost:3000/users/mail/haykel.ouhichi@esprit.tn
 
 
 
