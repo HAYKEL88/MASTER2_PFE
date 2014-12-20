@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.polytech.pfe_android"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Welcome"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignIn"
+            android:label="@string/title_activity_sign_in" >
+        </activity>
+        <activity
+            android:name=".SignUp"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".WelcomeUser"
+            android:label="@string/title_activity_welcome_user" >
+        </activity>
+        <activity
+            android:name=".UpdateUser"
+            android:label="@string/title_activity_update_user" >
+        </activity>
+        <activity
+            android:name=".AddObjectif"
+            android:label="@string/title_activity_add_objectif" >
+        </activity>
+        <activity
+            android:name=".ObjectifsList"
+            android:label="@string/title_activity_objectifs_list" >
+        </activity>
+        <activity
+            android:name=".SendReclamation"
+            android:label="@string/title_activity_send_reclamation" >
+        </activity>
+        <activity
+            android:name=".Sicknesses"
+            android:label="@string/title_activity_sicknesses" >
+        </activity>
+    </application>
+
+</manifest>

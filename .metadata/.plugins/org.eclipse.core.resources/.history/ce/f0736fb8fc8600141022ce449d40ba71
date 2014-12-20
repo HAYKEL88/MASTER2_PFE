@@ -1,0 +1,45 @@
+package edu.polytech.pojo;
+
+public class Service {
+
+	
+	public String name;
+	public String description;
+	public String link;
+	
+	public Service(){
+		
+	}
+	
+	
+	public Service(String name, String description, String link) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.link = link;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	
+	
+	
+	
+	
+	
+}

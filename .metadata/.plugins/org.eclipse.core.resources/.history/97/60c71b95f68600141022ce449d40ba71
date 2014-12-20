@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PFE_Android</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_sign_in">SignIn</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_welcome_user">WelcomeUser</string>
+    <string name="title_activity_update_user">UpdateUser</string>
+    <string name="title_activity_add_objectif">AddObjectif</string>
+    <string name="title_activity_objectifs_list">ObjectifsList</string>
+    <string name="title_activity_send_reclamation">SendReclamation</string>
+    <string name="title_activity_sicknesses">Sicknesses</string>
+    <string name="title_activity_welcome_admin">WelcomeAdmin</string>
+    <string name="title_activity_update_admin">UpdateAdmin</string>
+    <string name="title_activity_add_user">AddUser</string>
+    <string name="title_activity_users_list">UsersList</string>
+    <string name="title_activity_reclamations">Reclamations</string>
+    <string name="title_activity_rules_list">RulesList</string>
+    <string name="title_activity_add_rule">AddRule</string>
+    <string name="title_activity_add_wickness">AddWickness</string>
+    <string name="title_activity_wicknesses">Wicknesses</string>
+    <string name="title_activity_about">About</string>
+
+</resources>
