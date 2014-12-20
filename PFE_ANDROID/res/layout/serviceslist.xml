@@ -6,7 +6,7 @@
     android:padding="6dip" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvWelcomeUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -18,8 +18,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/tvWelcomeUser"
+        android:layout_below="@+id/tvWelcomeUser"
         android:text="Description :"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -33,30 +33,30 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/tvServiceName"
+        android:id="@+id/tvObjectifName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignBaseline="@+id/tvWelcomeUser"
+        android:layout_alignBottom="@+id/tvWelcomeUser"
         android:layout_marginLeft="59dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/tvWelcomeUser"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/tvServiceDescription"
+        android:id="@+id/tvObjectifPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/tvServiceName"
+        android:layout_alignLeft="@+id/tvObjectifName"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/tvServiceLink"
+        android:id="@+id/tvObjectifComments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/tvServiceDescription"
+        android:layout_alignLeft="@+id/tvObjectifPriority"
         android:text="TextView" />
 
 </RelativeLayout>

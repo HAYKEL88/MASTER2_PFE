@@ -1,0 +1,21 @@
+package edu.polytech.pojo;
+
+public class Objectif {
+
+	public String name;
+	public String priority;
+	public String Comments;
+	
+	public Objectif() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Objectif(String name, String priority, String comments) {
+		super();
+		this.name = name;
+		this.priority = priority;
+		Comments = comments;
+	}
+	
+	
+}

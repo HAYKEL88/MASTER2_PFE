@@ -1,0 +1,42 @@
+package edu.polytech.pfe_android;
+
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+public class AddObjectif extends Activity {
+    private static final String SERVICE_URL = "http://10.0.2.2:3000/objectifs";
+
+	private String array_spinnerObjectifs[]=
+					{"","","","","","",""};
+	private String array_spinnerPriority[]=
+					{"","","","","","",""};
+	
+	Spinner spinnerName;
+	Spinner spinnerPriority;
+	EditText etComments;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_add_objectif);
+		spinnerName=(Spinner) findViewById(R.id.spinnerName);
+		spinnerPriority=(Spinner) findViewById(R.id.spinnerPriority);
+		etComments = (EditText) findViewById(R.id.etComments);
+				
+	}
+
+	public void addObjectif(View view) {
+
+	}
+	
+	
+	
+	
+}

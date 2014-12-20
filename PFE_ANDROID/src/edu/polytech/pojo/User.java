@@ -1,5 +1,7 @@
 package edu.polytech.pojo;
 
+import java.util.List;
+
 
 public class User {
 
@@ -8,26 +10,80 @@ public class User {
 	public String lastName;
 	public String age;
 	public String email;
+	public String height;
+	public String weight;
 	public String sex;
 	public String password;
-	
+	public List<Objectif> objectifs;
 	
 	public User() {
 		
 	}
 	
 	
-	public User(String id, String firstName, String lastName, String age, String email,
-			String sex, String password) {
+
+	
+
+
+
+	public User(String id, String firstName, String lastName, String age,
+			String email, String height, String weight, String sex,
+			String password, List<Objectif> objectifs) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.email = email;
+		this.height = height;
+		this.weight = weight;
 		this.sex = sex;
 		this.password = password;
+		this.objectifs = objectifs;
 	}
+
+
+
+
+
+
+
+	public List<Objectif> getObjectifs() {
+		return objectifs;
+	}
+
+
+	public void setObjectifs(List<Objectif> objectifs) {
+		this.objectifs = objectifs;
+	}
+
+
+
+
+	public String getHeight() {
+		return height;
+	}
+
+
+
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
+
+
+	public String getWeight() {
+		return weight;
+	}
+
+
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}

@@ -188,9 +188,9 @@ import android.content.Intent;
 			   convertView = vi.inflate(R.layout.serviceslist, null);
 			 
 			   holder = new ViewHolder();
-			   holder.name = (TextView) convertView.findViewById(R.id.tvServiceName);
-			   holder.description = (TextView) convertView.findViewById(R.id.tvServiceDescription);
-			   holder.link = (TextView) convertView.findViewById(R.id.tvServiceLink);
+			   holder.name = (TextView) convertView.findViewById(R.id.tvObjectifName);
+			   holder.description = (TextView) convertView.findViewById(R.id.tvObjectifPriority);
+			   holder.link = (TextView) convertView.findViewById(R.id.tvObjectifComments);
 
 			 
 			   convertView.setTag(holder);

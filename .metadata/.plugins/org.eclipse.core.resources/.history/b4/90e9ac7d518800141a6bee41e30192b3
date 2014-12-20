@@ -1,0 +1,15 @@
+package edu.polytech.pojo;
+
+import java.util.Date;
+
+public class Session {
+
+	public static User user;
+	public static Date dateBegin;
+	public static Date dateEnd;
+	
+	
+	
+	
+	
+}

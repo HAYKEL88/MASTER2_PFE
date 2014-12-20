@@ -100,8 +100,31 @@ exports.updateuser = function(req, res) {
                 console.log('Error updating user: ' + err);
                 res.send({'error':'An error has occurred'});
             } else {
-                console.log('' + result + ' document(s) updated');
-                res.send(user);
+                console.log('' + result + ' User(s) updated');
+                //res.send(user);
+				res.send('User Successfully updated !');
+            }
+        });
+    });
+}
+  ///////////////////////////////////////////////////////////////////////////////////////////
+
+  
+
+exports.addObjectif = function(req, res) {
+    var id = req.params.id;
+    var user = req.body;
+    console.log('Updating user: ' + id);
+    console.log(JSON.stringify(user));
+    db.collection('users', function(err, collection) {
+        collection.update({'_id':new BSON.ObjectID(id)}, user, {safe:true}, function(err, result) {
+            if (err) {
+                console.log('Error adding Objectif: ' + err);
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log('' + result + ' User(s) updated');
+                //res.send(user);
+				res.send('Objectif Successfully updated !');
             }
         });
     });
@@ -134,7 +157,10 @@ var populateDB = function() {
         lastName: "OUHICHI",
         age: "26",
         sex: "Man",
+		height: "189",
+        weight: "94",
         email: "haykel.ouhichi@esprit.tn",
+		objectifs: [{name: "Objectif 1", priority: "HIGH", comments: "hhhhhhhhhhhhhh"},{name: "Objectif 5", priority: "LOW", comments: "fffffffffff"}],
         password: "haykel"
     },
     {
@@ -142,7 +168,10 @@ var populateDB = function() {
         lastName: "GHARSALLI",
         age: "24",
         sex: "Woman",
+		height: "164",
+        weight: "46",
         email: "dalel.gharsalli@esprit.tn",
+		objectifs: [{name: "Objectif 1", priority: "MEDIUM", comments: "ssssssssss"},{name: "Objectif 5", priority: "LOW", comments: "sssssssss"}],
         password: "dalel"
     }];
  
