@@ -109,14 +109,29 @@ var populateDB = function() {
  
     var Services = [
     {
-        name: "Service 1",
-        description: "Description service 1",
-        link: "www.haikelouhichi.magix.net/public"
+        name: "Tracking user activities",
+        description: "This service allows a log of user activities with their specific date and time.",
+        link: "https://github.com/HAYKEL88/MASTER2_PFE"
+    },
+	{
+        name: "Improve your Heart Rate",
+        description: "Our application allows with recommendations provided to reduce the risk of heart disease.",
+        link: "https://github.com/HAYKEL88/MASTER2_PFE"
+    },
+	{
+        name: "No More Sleepless Nights",
+        description: "It 's a way to deal with insomnia and to get a great night's sleep  by adjusting the insomnia problem with monitoring sleep and waking activities users.",
+        link: "https://github.com/HAYKEL88/MASTER2_PFE"
+    },
+	{
+        name: "Open street maps",
+        description: "A mobile web mapping service application and technology provided by Google, offering satellite imagery, street maps, and Street View perspectives, as well as functions such as a route planner for traveling by foot, car, bicycle , or with public transportation.",
+        link: "https://github.com/HAYKEL88/MASTER2_PFE"
     },
     {
-        name: "Service 2",
-        description: "Description service 2",
-        link: "www.haikelouhichi.magix.net/public"
+        name: "Service n",
+        description: "Description service n",
+        link: "https://github.com/HAYKEL88/MASTER2_PFE"
     }];
  
     db.collection('Services', function(err, collection) {

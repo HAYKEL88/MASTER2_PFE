@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="SERVICE_URL" key="selection"/>
+		<item value="R.l" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="SERVICE_URL"/>
-			<item value="TVRE"/>
-			<item value="TVRES"/>
-			<item value="exec"/>
-			<item value="doresp"/>
-			<item value="SOCKET_TIMEOUT"/>
-			<item value="doResponse"/>
-			<item value="updat"/>
+			<item value="r.l"/>
+			<item value="startActivity"/>
+			<item value="params"/>
+			<item value="param"/>
+			<item value=" Toast.makeTex"/>
+			<item value="WebServiceTask"/>
+			<item value="getna"/>
+			<item value="getServices"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Objectif"/>
 			<item value="Service"/>
 			<item value="wst.addNameValuePair"/>
 		</list>

@@ -56,7 +56,7 @@ public class ObjectifsList extends Activity {
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_welcome);
+			setContentView(R.layout.activity_objectifs_list);
 			userSession=new Session();
 			ObjectifsList=(ArrayList<Objectif>) userSession.getUser().getObjectifs();
 			

@@ -32,3 +32,8 @@
 1419095370836	Rename field 'tvServiceName'
 1419095387827	Rename field 'tvServiceDescription'
 1419095411276	Rename field 'tvServiceLink'
+1419160393724	Copy file
+1419160407646	Rename resource 'usersList'
+1419160694549	Delete element
+1419160865175	Rename field 'tvPassword'
+1419160876581	Rename field 'textView5'

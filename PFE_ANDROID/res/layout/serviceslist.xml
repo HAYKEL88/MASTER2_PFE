@@ -15,24 +15,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvWelcomeUser"
-        android:layout_below="@+id/tvWelcomeUser"
-        android:text="Description :"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:text="Link :"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
         android:id="@+id/tvObjectifName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,10 +25,21 @@
         android:text="TextView" />
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvWelcomeUser"
+        android:layout_below="@+id/tvWelcomeUser"
+        android:layout_marginTop="44dp"
+        android:text="Description :"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/tvObjectifPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView3"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
         android:layout_alignLeft="@+id/tvObjectifName"
         android:text="TextView" />
 
@@ -54,9 +47,18 @@
         android:id="@+id/tvObjectifComments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
         android:layout_alignLeft="@+id/tvObjectifPriority"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="16dp"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvObjectifComments"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="Link :"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

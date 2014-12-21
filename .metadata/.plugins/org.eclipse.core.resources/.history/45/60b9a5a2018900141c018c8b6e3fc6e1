@@ -1,0 +1,27 @@
+package edu.polytech.pfe_android;
+
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+public class WelcomeAdmin extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_welcome_admin);
+	}
+
+
+	public void updateProfile(View view) {
+		Intent intent = new Intent(this, UpdateAdmin.class);
+		startActivity(intent);
+	}
+
+	
+	
+}

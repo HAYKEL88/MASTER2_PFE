@@ -20,7 +20,7 @@ public class WelcomeUser extends Activity {
 		setContentView(R.layout.activity_welcome_user);
 		tvWelcomeUser = (TextView) findViewById(R.id.tvWelcomeUser);
 		Session sessionUser =new Session();
-		tvWelcomeUser.setText("Welcom : "+sessionUser.getUser().getFirstName()+" "+
+		tvWelcomeUser.setText("Welcome : "+sessionUser.getUser().getFirstName()+" "+
 							sessionUser.getUser().getLastName());
 	}
 

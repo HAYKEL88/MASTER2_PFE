@@ -62,7 +62,7 @@ exports.findAll = function(req, res) {
     db.collection('users', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.jsonp({"users":items});
-			console.log(items);
+			console.log('Success: ' + JSON.stringify(items));
         });
     });
 };
@@ -153,6 +153,17 @@ var populateDB = function() {
  
     var users = [
     {
+        firstName: "pfe",
+        lastName: "PFE",
+        age: "26",
+        sex: "Man",
+		height: "189",
+        weight: "94",
+        email: "pfe@pfe.pfe",
+		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
+        password: "pfe"
+    },
+	{
         firstName: "Haykel",
         lastName: "OUHICHI",
         age: "26",
@@ -160,10 +171,10 @@ var populateDB = function() {
 		height: "189",
         weight: "94",
         email: "haykel.ouhichi@esprit.tn",
-		objectifs: [{name: "Objectif 1", priority: "HIGH", comments: "hhhhhhhhhhhhhh"},{name: "Objectif 5", priority: "LOW", comments: "fffffffffff"}],
+		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "haykel"
     },
-    {
+	{
         firstName: "Dalel",
         lastName: "GHARSALLI",
         age: "24",
@@ -171,8 +182,63 @@ var populateDB = function() {
 		height: "164",
         weight: "46",
         email: "dalel.gharsalli@esprit.tn",
-		objectifs: [{name: "Objectif 1", priority: "MEDIUM", comments: "ssssssssss"},{name: "Objectif 5", priority: "LOW", comments: "sssssssss"}],
+		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "dalel"
+    },
+	{
+        firstName: "Mohamed Ali",
+        lastName: "Ben Ayed",
+        age: "24",
+        sex: "Man",
+		height: "201",
+        weight: "118",
+        email: "mohamedali.benayed@esprit.tn",
+		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "MEDIUM", comments: "I am an athlete and I have to maintain an ideal weight"}],
+        password: "dali"
+    },
+	{
+        firstName: "Amal",
+        lastName: "ZAYANI",
+        age: "25",
+        sex: "Woman",
+		height: "172",
+        weight: "69",
+        email: "amal.zayani@esprit.tn",
+		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
+        password: "amal"
+    },
+	{
+        firstName: "Skander",
+        lastName: "BEN MAHMOUD",
+        age: "26",
+        sex: "Man",
+		height: "177",
+        weight: "88",
+        email: "skander.benmahmoud@esprit.tn",
+		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "MEDIUM", comments: "I am an athlete and I have to maintain an ideal weight"}],
+        password: "skander"
+    },
+	{
+        firstName: "Amel",
+        lastName: "BEN OTHMENE",
+        age: "27",
+        sex: "Woman",
+		height: "177",
+        weight: "77",
+        email: "benothmane.amel@gmail.com",
+		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
+        password: "amel"
+    },
+	{
+        firstName: "Michel",
+        lastName: "BUFFA",
+        age: "44",
+        sex: "Man",
+		height: "180",
+        weight: "75",
+        email: "micbuffa@gmail.com",
+		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
+        password: "michel"
     }];
  
     db.collection('users', function(err, collection) {

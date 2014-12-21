@@ -61,15 +61,27 @@ public class SignIn extends Activity {
 	
 	public void signIn(View view) {
 		
-		authenticate();
-		
 		Intent intent =null;
+		if(etEmail.getText().toString().equals("admin@admin.com")
+				&&etPassword.getText().toString().equals("admin"))
+		{
+			etEmail.setText("");
+			etPassword.setText("");
+			tvResponse.setTag("Administrateur succesfully authenticated");
+			intent = new Intent(this, WelcomeAdmin.class);
+			startActivity(intent);
+		}
+		
+		else
+		{
+		
+		authenticate();
 		
 		intent = new Intent(this, WelcomeUser.class);
 		
 		
+		}
 		
-		//startActivity(intent);
 	}
 
 	

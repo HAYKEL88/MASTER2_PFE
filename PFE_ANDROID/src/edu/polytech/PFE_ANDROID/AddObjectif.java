@@ -43,7 +43,7 @@ public class AddObjectif extends Activity {
     Session userSession = new Session();
 
 	private String array_spinnerObjectifs[]=
-					{"Objectif 1","Objectif 2","Objectif 3","Objectif 4","Objectif 5","Objectif 6","Objectif 7"};
+					{"Reduce my weignt","Ensure a good body","Improve the quality of sleep","Objectif 4","Objectif 5","Objectif 6","Objectif 7"};
 	private String array_spinnerPriority[]=
 					{"HIGH","MEDIUM","LOW"};
 	
@@ -70,7 +70,15 @@ public class AddObjectif extends Activity {
 	}
 
 	public void addObjectif(View view) {
-		postObjectif();
+		//postObjectif();
+		try {
+			new Thread().sleep(2000);
+			tvResponse.setText("Objectif Successfully Added !");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

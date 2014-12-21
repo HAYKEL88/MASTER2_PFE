@@ -19,16 +19,6 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="272dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvResponse"
-        android:layout_alignLeft="@+id/tvResponse"
-        android:layout_marginBottom="78dp"
-        android:onClick="signIn"
-        android:text="@string/button_signIn" />
-
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="272dp"
@@ -41,18 +31,8 @@
         <requestFocus />
     </EditText>
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="272dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignRight="@+id/button1"
-        android:layout_marginBottom="31dp"
-        android:ems="10"
-        android:inputType="textPassword" />
-
     <TextView
-        android:id="@+id/tvPassword"
+        android:id="@+id/tvHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etEmail"
@@ -65,11 +45,32 @@
         android:id="@+id/tvEmail"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvPassword"
+        android:layout_alignLeft="@+id/tvHeight"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/tvPassword"
+        android:layout_alignRight="@+id/tvHeight"
         android:layout_marginTop="46dp"
         android:text="Email :"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etEmail"
+        android:layout_alignRight="@+id/etEmail"
+        android:layout_below="@+id/tvHeight"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPassword"
+        android:layout_alignRight="@+id/etPassword"
+        android:layout_below="@+id/etPassword"
+        android:layout_marginTop="49dp"
+        android:onClick="signIn"
+        android:text="@string/button_signIn" />
 
 </RelativeLayout>
