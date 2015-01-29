@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Collecting Moto 360 Sensors Data</string>
+    <string name="action_about">About</string>
+    <string name="menu_healthrate">Health Rate Datas</string>
+    <string name="about_development_content"><![CDATA[
+<p><b>Development</b> <a href="fr.linkedin.com/in/haykelouhichi">Haykel OUHICHI</a></p>
+<p><b>Development</b> <a href="fr.linkedin.com/in/haykelouhichi">Haykel OUHICHI</a></p>
+<p><b>Development</b> <a href="fr.linkedin.com/in/haykelouhichi">Haykel OUHICHI</a></p>
+<p><b>Development</b> <a href="fr.linkedin.com/in/haykelouhichi">Haykel OUHICHI</a></p>
+]]></string>
+
+    <string name="about_open_source_content"><![CDATA[
+<p><b>About Project</b><br/><a href="https://github.com/HAYKEL88/MASTER2_PFE">https://github.com/HAYKEL88/MASTER2_PFE</a></p>
+
+]]></string>
+
+
+    <string name="about_github_content"><![CDATA[
+<p><b>Download source from</b><br/><a href="https://github.com/HAYKEL88/MASTER2_PFE">https://github.com/HAYKEL88/MASTER2_PFE</a></p>
+<p>MASTER 2 IFI - IAM</p>
+]]></string>
+
+
+</resources>
