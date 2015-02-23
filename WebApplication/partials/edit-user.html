@@ -1,0 +1,117 @@
+﻿<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="view">
+    <div class="container">
+        <div class="row">
+        <nav class= "navbar navbar-default" role= "navigation" >
+        <div class= "navbar-header" >
+        <a class= "navbar-brand" href= "#/users"><i class="glyphicon glyphicon-th-large"></i> Users List </a>
+        <a ng-show="user._id" class= "navbar-brand" href= "#/edit-user/0"><i class="glyphicon glyphicon-plus"></i> Create User </a>
+        <a ng-show="user._id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Currently Editing User Number: {{user._id}}</a>
+        </div>
+        </nav>
+        <header>
+            <h3>{{title}}</h3>
+        </header>
+        <div class="col-md-12">
+
+<form role="form" name="myForm" class="form-horizontal">
+<div class="row">
+    <div class= "form-group" ng-class="{error: myForm.firstName.$invalid}">
+        <label class= "col-md-2"> First Name </label>
+        <div class="col-md-4">
+            <input name="name" ng-model="user.firstName" type= "text" class= "form-control" placeholder="User name" required/>
+            <span ng-show="myForm.firstName.$dirty && myForm.firstName.$invalid" class="help-inline">Firs tName Required</span>
+        </div>
+    </div>
+
+
+
+
+<div class= "form-group">
+    <label class= "col-md-2"> Last Name </label>
+    <div class="col-md-4">
+        <input name="lastName" ng-model="user.lastName" type= "text" class= "form-control" placeholder="Enter Last Name" required/>
+        <span ng-show="myForm.lastName.$dirty && myForm.lastName.$invalid && !myForm.lastName.$error.email" class="help-inline">Last Name Required</span>
+        <span ng-show="myForm.lastName.$error.lastName" class="help-inline">Last Name is not valid</span>
+    </div>
+</div>
+
+<div class= "form-group">
+    <label class= "col-md-2"> Email address </label>
+    <div class="col-md-4">
+        <input name="email" ng-model="user.email" type= "email" class= "form-control" placeholder="Enter email" required/>
+        <span ng-show="myForm.email.$dirty && myForm.email.$invalid && !myForm.email.$error.email" class="help-inline">Email Required</span>
+        <span ng-show="myForm.email.$error.email" class="help-inline">Email is not valid</span>
+    </div>
+</div>
+
+<div class= "form-group">
+    <label class= "col-md-2"> Height </label>
+    <div class="col-md-4">
+        <input name="height" ng-model="user.height" type= "text" class= "form-control" placeholder="Enter user height" required/>
+        <span ng-show="myForm.height.$dirty && myForm.height.$invalid && !myForm.height.$error.height" class="help-inline">Height Required</span>
+        <span ng-show="myForm.height.$error.height" class="help-inline">Height is not valid</span>
+    </div>
+</div>
+
+
+<div class= "form-group">
+    <label class= "col-md-2"> Weight </label>
+    <div class="col-md-4">
+        <input name="weight" ng-model="user.weight" type= "text" class= "form-control" placeholder="Enter user weight" required/>
+        <span ng-show="myForm.weight.$dirty && myForm.weight.$invalid && !myForm.weight.$error.weight" class="help-inline">weight Required</span>
+        <span ng-show="myForm.weight.$error.weight" class="help-inline">weight is not valid</span>
+    </div>
+</div>
+
+
+<div class= "form-group">
+    <label class= "col-md-2"> Password </label>
+    <div class="col-md-4">
+        <input name="password" ng-model="user.password" type= "text" class= "form-control" placeholder="Enter user password" required/>
+        <span ng-show="myForm.password.$dirty && myForm.password.$invalid && !myForm.password.$error.email" class="help-inline">Password Required</span>
+        <span ng-show="myForm.password.$error.password" class="help-inline">Password is not valid</span>
+    </div>
+</div>
+
+
+<div class= "form-group">
+    <label class= "col-md-2"> Gender </label>
+    <div class="col-md-4">
+        <input name="gender" ng-model="user.sex" type= "text" class= "form-control" placeholder="Enter user gender" required/>
+        <span ng-show="myForm.gender.$dirty && myForm.gender.$invalid && !myForm.gender.$error.gender" class="help-inline">gender Required</span>
+        <span ng-show="myForm.gender.$error.gender" class="help-inline">Age is not valid</span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class= "form-group">
+    <label class= "col-md-2"></label>
+    <div class="col-md-4">
+    <a href="#/" class="btn">Cancel</a>
+        <button ng-click="saveUser(user);"
+                ng-disabled="isClean() || myForm.$invalid"
+                class="btn btn-primary">{{buttonText}}</button>
+        <button ng-click="deleteUser(user)"
+                ng-show="user._id" class="btn btn-warning">Delete</button>
+    </div>
+</div>
+</div>
+</form>
+        </div></div>
+    </div>
+</div>

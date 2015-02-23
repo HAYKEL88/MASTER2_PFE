@@ -98,7 +98,7 @@ exports.findAll = function(req, res) {
     db.collection('sensors', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.jsonp({"sensors":items});
-			console.log('Success: ' + JSON.stringify(items));
+			//console.log('Success: ' + JSON.stringify(items));
         });
     });
 };

@@ -1,0 +1,32 @@
+ <div class="row">
+    <div class="col-md-12" ng-show="rules.length > 0">
+
+    <nav class= "navbar navbar-default" role= "navigation" >
+    <div class= "navbar-header" >
+    <a class="btn btn-lg btn-success" href="#/edit-rule/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add new rule</a>
+    </div>
+    </nav>
+        <table class="table table-striped table-bordered">
+        <thead>
+        <th>Name&nbsp;</th>
+        <th>Description&nbsp;</th>
+        <th>Formula&nbsp;</th>
+        <th>Admin Email&nbsp;</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in rules">
+                <td>{{data.name}} </td>
+                <td>{{data.description}}</td>
+                <td>{{data.formule}}</td>
+                <td>{{data.adminEmail}}</td>
+                <td><a href="#/edit-rule/{{data._id}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp; Edit Rule</a></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="col-md-12" ng-show="rules.length == 0">
+        <div class="col-md-12">
+            <h4>No rules found</h4>
+        </div>
+    </div>
+</div>
