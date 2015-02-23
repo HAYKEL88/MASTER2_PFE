@@ -45,7 +45,7 @@ import android.content.Context;
 
 	public class SignUp extends Activity {
 
-	    private static final String SERVICE_URL = "http://10.0.2.2:3000/users";
+	    private static final String SERVICE_URL = "http://192.168.43.227:3000/users";
 		EditText etFN;
 		EditText etLN;
 		EditText etAge;

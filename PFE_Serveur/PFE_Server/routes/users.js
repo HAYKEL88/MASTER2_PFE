@@ -20,6 +20,48 @@ db.open(function(err, db) {
 });
  
  
+ /*--------------------------------------------------------------------------------------------------------------------*/
+
+
+exports.findByEmail = function(req, res) {
+    console.log(req.params);
+    var email = req.params.email;
+     db.collection('users', function(err, collection) {
+        collection.find({'email': email}).toArray( function(err, item) {
+            if (err) {
+                //res.send({'error':'An error has occurred'});
+				res.send({'Error':'An error has occurred'});
+            } else {
+                console.log('Success: ' + JSON.stringify(item));
+                res.jsonp({"users":item});
+				
+				//res.send({'Success':'User succesfully signed In'});
+            }
+        });
+    });
+	
+	
+};
+
+
+
+/*
+exports.findByEmail = function(req, res) {
+    console.log(req.params);
+    var email = req.params.email;
+    console.log('findByLogin: ' + email);
+    db.collection('users', function(err, collection) {
+        collection.find({'email': email}, function(err, item) {
+            console.log(item);
+            res.jsonp(item);
+        });
+    });
+};
+
+*/
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+ 
  ///////////////////////////////////////////////////////////////////////////////////////////
  
 exports.findById = function(req, res) {
@@ -72,6 +114,7 @@ exports.findAll = function(req, res) {
  
 exports.adduser = function(req, res) {
     var user = req.body;
+	console.log(user);
     console.log('Adding user: ' + JSON.stringify(user));
     db.collection('users', function(err, collection) {
         collection.insert(user, {safe:true}, function(err, result) {
@@ -107,28 +150,7 @@ exports.updateuser = function(req, res) {
         });
     });
 }
-  ///////////////////////////////////////////////////////////////////////////////////////////
 
-  
-
-exports.addObjectif = function(req, res) {
-    var id = req.params.id;
-    var user = req.body;
-    console.log('Updating user: ' + id);
-    console.log(JSON.stringify(user));
-    db.collection('users', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, user, {safe:true}, function(err, result) {
-            if (err) {
-                console.log('Error adding Objectif: ' + err);
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('' + result + ' User(s) updated');
-                //res.send(user);
-				res.send('Objectif Successfully updated !');
-            }
-        });
-    });
-}
   ///////////////////////////////////////////////////////////////////////////////////////////
 
 exports.deleteuser = function(req, res) {
@@ -160,7 +182,6 @@ var populateDB = function() {
 		height: "189",
         weight: "94",
         email: "pfe@pfe.pfe",
-		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "pfe"
     },
 	{
@@ -171,7 +192,6 @@ var populateDB = function() {
 		height: "189",
         weight: "94",
         email: "haykel.ouhichi@esprit.tn",
-		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "haykel"
     },
 	{
@@ -182,7 +202,6 @@ var populateDB = function() {
 		height: "164",
         weight: "46",
         email: "dalel.gharsalli@esprit.tn",
-		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "dalel"
     },
 	{
@@ -193,7 +212,6 @@ var populateDB = function() {
 		height: "201",
         weight: "118",
         email: "mohamedali.benayed@esprit.tn",
-		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "MEDIUM", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "dali"
     },
 	{
@@ -204,7 +222,6 @@ var populateDB = function() {
 		height: "172",
         weight: "69",
         email: "amal.zayani@esprit.tn",
-		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "amal"
     },
 	{
@@ -215,7 +232,6 @@ var populateDB = function() {
 		height: "177",
         weight: "88",
         email: "skander.benmahmoud@esprit.tn",
-		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "MEDIUM", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "skander"
     },
 	{
@@ -226,7 +242,6 @@ var populateDB = function() {
 		height: "177",
         weight: "77",
         email: "benothmane.amel@gmail.com",
-		objectifs: [{name: "Reduce my weignt", priority: "MEDIUM", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "amel"
     },
 	{
@@ -237,7 +252,6 @@ var populateDB = function() {
 		height: "180",
         weight: "75",
         email: "micbuffa@gmail.com",
-		objectifs: [{name: "Reduce my weignt", priority: "HIGH", comments: "I'm on a diet and I need to lose weight"},{name: "Ensure a good body", priority: "LOW", comments: "I am an athlete and I have to maintain an ideal weight"}],
         password: "michel"
     }];
  

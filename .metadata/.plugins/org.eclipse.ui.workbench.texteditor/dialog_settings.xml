@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="DecryptedFile" key="selection"/>
+		<item value="Execute" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="execute"/>
+			<item value="params"/>
 			<item value="DecryptedFile"/>
 			<item value="r.l"/>
 			<item value="startActivity"/>
-			<item value="params"/>
 			<item value="param"/>
 			<item value=" Toast.makeTex"/>
 			<item value="WebServiceTask"/>
-			<item value="getna"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Objectif"/>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+
+    <TextView
+        android:id="@+id/tvWelcomeUser"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/updateProfile"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_updateProfile"
+        android:onClick="updateProfile"/>
+
+    <Button
+        android:id="@+id/addObjectif"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_addObjectif"
+        android:onClick="addObjectif"/>
+
+    <Button
+        android:id="@+id/showObjectifs"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_showObjectifs"
+        android:onClick="showObjectifs"/>
+
+    <Button
+        android:id="@+id/sendReclamation"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_sendReclamations"
+        android:onClick="sendReclamation"/>
+    <Button
+        android:id="@+id/startCollectingData"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_startCollectingData"
+        android:onClick="startCollectingData"/>
+    <Button
+        android:id="@+id/stopCollectingData"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_stopCollectingData"
+        android:onClick="stopCollectingData"/>
+
+
+
+</LinearLayout>

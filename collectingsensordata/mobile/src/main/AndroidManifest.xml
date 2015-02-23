@@ -3,6 +3,8 @@
     package="edu.polytech.pfe.collectingsensordata" >
 
     <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +16,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".CollectingDataActivity"
+            android:name=".WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +26,8 @@
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="@string/action_about" >
+            android:label="@string/title_activity_about" >
         </activity>
-
 
         <service android:name=".SensorReceiverService" >
             <intent-filter>
@@ -34,8 +35,74 @@
             </intent-filter>
         </service>
 
-
+        <activity
+            android:name=".CollectingDataActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ContactUsActivity"
+            android:label="@string/title_activity_contact_us" >
+        </activity>
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/title_activity_sign_in" >
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".WelcomeAdminActivity"
+            android:label="@string/title_activity_welcome_admin" >
+        </activity>
+        <activity
+            android:name=".WelcomeUserActivity"
+            android:label="@string/title_activity_welcome_user" >
+        </activity>
+        <activity
+            android:name=".UpdateUserActivity"
+            android:label="@string/title_activity_update_user" >
+        </activity>
+        <activity
+            android:name=".AddObjectifActivity"
+            android:label="@string/title_activity_add_objectif" >
+        </activity>
+        <activity
+            android:name=".ShowObjectifsActivity"
+            android:label="@string/title_activity_show_objectifs" >
+        </activity>
+        <activity
+            android:name=".SendReclamationActivity"
+            android:label="@string/title_activity_send_reclamation" >
+        </activity>
+        <activity
+            android:name=".UpdateAdminActivity"
+            android:label="@string/title_activity_update_admin" >
+        </activity>
+        <activity
+            android:name=".ShowUsersActivity"
+            android:label="@string/title_activity_show_users" >
+        </activity>
+        <activity
+            android:name=".ShowReclamationsActivity"
+            android:label="@string/title_activity_show_reclamations" >
+        </activity>
+        <activity
+            android:name=".AddObjectifAdminActivity"
+            android:label="@string/title_activity_add_objectif_admin" >
+        </activity>
+        <activity
+            android:name=".ShowObjectifsAdminActivity"
+            android:label="@string/title_activity_show_objectifs_admin" >
+        </activity>
+        <activity
+            android:name=".AddRuleActivity"
+            android:label="@string/title_activity_add_rule" >
+        </activity>
+        <activity
+            android:name=".ShowRulesActivity"
+            android:label="@string/title_activity_show_rules" >
+        </activity>
     </application>
 
 </manifest>
-

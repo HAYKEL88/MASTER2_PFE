@@ -109,13 +109,22 @@ var populateDB = function() {
  
     var rules = [
     {
-        name: "rule 1"
+        name: "rule 1",
+		description: "xxxxxxxxxxxxxx",
+		formule: "xxxxxxxxxxxxx",
+		adminEmail: "admin@admin.com"
     },
 	{
-        name: "rule 2"
+        name: "rule 2",
+		description: "xxxxxxxxxxxxxx",
+		formule: "xxxxxxxxxxxxx",
+		adminEmail: "admin@admin.com"
     },
     {
-        name: "rule 3"
+        name: "rule 3",
+		description: "xxxxxxxxxxxxxx",
+		formule: "xxxxxxxxxxxxx",
+		adminEmail: "admin@admin.com"
     }];
  
     db.collection('rules', function(err, collection) {

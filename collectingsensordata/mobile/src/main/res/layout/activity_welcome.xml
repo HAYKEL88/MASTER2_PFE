@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+
+    <Button
+        android:id="@+id/registration"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_signIn"
+        android:onClick="signIn"/>
+
+    <Button
+        android:id="@+id/usersList"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_signUp"
+        android:onClick="signUp"/>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_about"
+        android:onClick="about"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_contactUs"
+        android:onClick="contactUs"/>
+
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:padding="10dp"
+        android:text="@string/some_services" android:textSize="20sp" />
+
+    <EditText android:id="@+id/myFilter" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:ems="10"
+        android:hint="@string/some_hint">
+        <requestFocus />
+    </EditText>
+
+    <ListView android:id="@+id/listView1" android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</LinearLayout>
