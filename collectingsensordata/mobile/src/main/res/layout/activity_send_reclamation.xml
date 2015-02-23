@@ -6,7 +6,51 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="edu.polytech.pfe.collectingsensordata.SendReclamationActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/etReclamation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/sendReclamation"
+        android:layout_below="@+id/textView" />
+
+    <Button
+        android:id="@+id/sendReclamation"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_sendReclamations"
+        android:onClick="sendReclamation"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="119dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Reclamation Body"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tvResponse"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="33dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 
 </RelativeLayout>

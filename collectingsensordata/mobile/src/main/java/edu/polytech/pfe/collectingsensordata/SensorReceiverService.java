@@ -116,7 +116,7 @@ public class SensorReceiverService extends WearableListenerService {
         Log.d(TAG, "DiffMinutes "+diffMinutes);
         Log.d(TAG, "diffHours "+diffHours);
 
-       // try {
+        try {
             if (((diffMinutes > 0) && (diffHours == 0)) || ((diffMinutes == (-59)) && (diffHours == 1))) {
                 int i = 0;
                 for (i = 0; i < sensorManager.getSensors().size(); i++) {
@@ -133,12 +133,12 @@ public class SensorReceiverService extends WearableListenerService {
                 Log.d(TAG,String.valueOf(lastSendDate.getTime()));
             }
 
-       /* }
+        }
         catch (Exception ex)
         {
             Log.d(TAG, "Exception "+ex.getMessage());
         }
-*/
+
 
     }
 

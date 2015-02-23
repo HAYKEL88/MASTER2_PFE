@@ -71,6 +71,7 @@
     <string name="some_users">  Display and Filter some Users!</string>
     <string name="some_services">  Display and Filter some Services !</string>
     <string name="some_objectifs">  Display and Filter some Objectifs !</string>
+    <string name="some_reclamations">  Display and Filter some Reclamations !</string>
     <string name="some_hint">  Type here to filter…</string>
     <string name="title_activity_show_objectifs">ShowObjectifsActivity</string>
     <string name="title_activity_show_users">ShowUsersActivity</string>

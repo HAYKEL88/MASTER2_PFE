@@ -23,17 +23,17 @@ db.open(function(err, db) {
  /*--------------------------------------------------------------------------------------------------------------------*/
 
 
-exports.findByName = function(req, res) {
+exports.findByUserEmail = function(req, res) {
     console.log(req.params);
-    var name = req.params.name;
+    var userEmail = req.params.userEmail;
      db.collection('objectifs', function(err, collection) {
-        collection.find({'name': name}).toArray( function(err, item) {
+        collection.find({'userEmail': userEmail}).toArray( function(err, item) {
             if (err) {
                 //res.send({'error':'An error has occurred'});
 				res.send({'Error':'An error has occurred'});
             } else {
                 console.log('Success: ' + JSON.stringify(item));
-                res.jsonp({"objectifs":item});
+                res.jsonp({"Objectifs":item});
 				
 				//res.send({'Success':'objectif succesfully signed In'});
             }
@@ -111,28 +111,6 @@ exports.updateObjectif = function(req, res) {
         });
     });
 }
-  ///////////////////////////////////////////////////////////////////////////////////////////
-
-  
-
-exports.addObjectif = function(req, res) {
-    var objectif = req.body;
-    console.log('Updating objectif: ' + id);
-    console.log(JSON.stringify(objectif));
-    db.collection('objectifs', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, objectif, {safe:true}, function(err, result) {
-            if (err) {
-                console.log('Error adding Objectif: ' + err);
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('' + result + ' objectif(s) updated');
-                //res.send(objectif);
-				res.send('Objectif Successfully updated !');
-            }
-        });
-    });
-}
-  ///////////////////////////////////////////////////////////////////////////////////////////
 
   exports.findObjectifsAdmin = function(req, res) {
      db.collection('objectifs', function(err, collection) {

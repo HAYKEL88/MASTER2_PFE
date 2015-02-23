@@ -10,9 +10,9 @@ db = new Db('PFEDB', server);
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'PFEDB' database");
-        db.collection('sensors', {strict:true}, function(err, collection) {
+        db.collection('reclamations', {strict:true}, function(err, collection) {
             if (err) {
-                console.log("The 'sensors' collection doesn't exist. Creating it with sample data...");
+                console.log("The 'reclamations' collection doesn't exist. Creating it with sample data...");
                 populateDB();
             }
         });
@@ -26,16 +26,16 @@ db.open(function(err, db) {
 exports.findByUser = function(req, res) {
     console.log(req.params);
     var email = req.params.email;
-     db.collection('sensors', function(err, collection) {
+     db.collection('reclamations', function(err, collection) {
         collection.find({'userEmail': email}).toArray( function(err, item) {
             if (err) {
                 //res.send({'error':'An error has occurred'});
 				res.send({'Error':'An error has occurred'});
             } else {
                 console.log('Success: ' + JSON.stringify(item));
-                res.jsonp({"sensors":item});
+                res.jsonp({"reclamations":item});
 				
-				//res.send({'Success':'sensor succesfully signed In'});
+				//res.send({'Success':'reclamation succesfully signed In'});
             }
         });
     });
@@ -48,33 +48,7 @@ exports.findByUser = function(req, res) {
  ///////////////////////////////////////////////////////////////////////////////////////////
  
  
-  /*--------------------------------------------------------------------------------------------------------------------*/
-
-
-exports.findByUserAndName = function(req, res) {
-    console.log(req.params);
-    var email = req.params.email;
-	var name = req.params.name;
-	
-	console.log(email);
-	console.log(name);
-	
-     db.collection('sensors', function(err, collection) {
-        collection.find({'userEmail': email,'name': name}).toArray( function(err, item) {
-            if (err) {
-                //res.send({'error':'An error has occurred'});
-				res.send({'Error':'An error has occurred'});
-            } else {
-               // console.log('Success: ' + JSON.stringify(item));
-                res.jsonp({"sensors":item});
-				
-				//res.send({'Success':'sensor succesfully signed In'});
-            }
-        });
-    });
-	
-	
-};
+  
 
 
  
@@ -85,8 +59,8 @@ exports.findByUserAndName = function(req, res) {
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving sensor: ' + id);
-    db.collection('sensors', function(err, collection) {
+    console.log('Retrieving reclamation: ' + id);
+    db.collection('reclamations', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.jsonp(item);
         });
@@ -98,10 +72,10 @@ exports.findById = function(req, res) {
 
  
 exports.findAll = function(req, res) {
-    db.collection('sensors', function(err, collection) {
+    db.collection('reclamations', function(err, collection) {
         collection.find().toArray(function(err, items) {
-            res.jsonp({"sensors":items});
-			//console.log('Success: ' + JSON.stringify(items));
+            res.jsonp({"reclamations":items});
+			console.log('Success: ' + JSON.stringify(items));
         });
     });
 };
@@ -109,19 +83,19 @@ exports.findAll = function(req, res) {
  ///////////////////////////////////////////////////////////////////////////////////////////
 
  
-exports.addsensor = function(req, res) {
-    var sensor = req.body;
-	console.log(sensor);
-    console.log('Adding sensor: ' + JSON.stringify(sensor));
-    db.collection('sensors', function(err, collection) {
-        collection.insert(sensor, {safe:true}, function(err, result) {
+exports.addreclamation = function(req, res) {
+    var reclamation = req.body;
+	console.log(reclamation);
+    console.log('Adding reclamation: ' + JSON.stringify(reclamation));
+    db.collection('reclamations', function(err, collection) {
+        collection.insert(reclamation, {safe:true}, function(err, result) {
             if (err) {
                 //res.send({'error':'An error has occurred'});
 				res.send({'Error':'An error has occurred'});
             } else {
                 console.log('Success: ' + JSON.stringify(result[0]));
                 //res.send(result[0]);
-				res.send({'Success':'sensor succesfully added'});
+				res.send({'Success':'reclamation succesfully added'});
             }
         });
     });
@@ -129,20 +103,20 @@ exports.addsensor = function(req, res) {
  
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-exports.updatesensor = function(req, res) {
+exports.updatereclamation = function(req, res) {
     var id = req.params.id;
-    var sensor = req.body;
-    console.log('Updating sensor: ' + id);
-    console.log(JSON.stringify(sensor));
-    db.collection('sensors', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, sensor, {safe:true}, function(err, result) {
+    var reclamation = req.body;
+    console.log('Updating reclamation: ' + id);
+    console.log(JSON.stringify(reclamation));
+    db.collection('reclamations', function(err, collection) {
+        collection.update({'_id':new BSON.ObjectID(id)}, reclamation, {safe:true}, function(err, result) {
             if (err) {
-                console.log('Error updating sensor: ' + err);
+                console.log('Error updating reclamation: ' + err);
                 res.send({'error':'An error has occurred'});
             } else {
-                console.log('' + result + ' sensor(s) updated');
-                //res.send(sensor);
-				res.send('sensor Successfully updated !');
+                console.log('' + result + ' reclamation(s) updated');
+                //res.send(reclamation);
+				res.send('reclamation Successfully updated !');
             }
         });
     });
@@ -152,10 +126,10 @@ exports.updatesensor = function(req, res) {
  
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-exports.deletesensor = function(req, res) {
+exports.deletereclamation = function(req, res) {
     var id = req.params.id;
-    console.log('Deleting sensor: ' + id);
-    db.collection('sensors', function(err, collection) {
+    console.log('Deleting reclamation: ' + id);
+    db.collection('reclamations', function(err, collection) {
         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred - ' + err});
@@ -172,28 +146,18 @@ exports.deletesensor = function(req, res) {
 // You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
  
-    var sensors = [
+    var reclamations = [
     {
-        name: "Heart Rate",
-        value: "77.0",
-        accuracy: "2",
-        timestamp: "1424654082125547860",
-		date: "23/02/2015",
-        time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit.tn"
+        description: "Hello First Reclamation",
+		userEmail: "haykel.ouhichi@esprit.tn"
     },
 	{
-        name: "Heart Rate",
-        value: "78.0",
-        accuracy: "2",
-        timestamp: "1424654082125547860",
-		date: "23/02/2015",
-        time: "02:18:39",
-        userEmail: "haykel.ouhichi@esprit.tn"
+        description: "Hello Second Reclamation",
+		userEmail: "haykel.ouhichi@esprit.tn"
     }];
  
-    db.collection('sensors', function(err, collection) {
-        collection.insert(sensors, {safe:true}, function(err, result) {});
+    db.collection('reclamations', function(err, collection) {
+        collection.insert(reclamations, {safe:true}, function(err, result) {});
     });
  
 };
