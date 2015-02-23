@@ -114,6 +114,43 @@ app.factory("services", ['$http', function($http) {
     obj.getSensor = function(sensorID){
         return $http.get(serviceBase + 'sensors/' + sensorID);
     }
+    obj.getHeartRate = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Heart Rate');
+    }
+
+    obj.getAccelerometer = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Accelerometer');
+    }
+
+    obj.getGyroscope = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Gyroscope');
+    }
+
+    obj.getLight = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Light');
+    }
+
+    obj.getLinearAcceleration = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Linear Acceleration');
+    }
+
+    obj.getMagneticField = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Magnetic Field');
+    }
+
+    obj.getRotationVector = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Rotation Vector');
+    }
+
+    obj.getStepCounter = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Step Counter');
+    }
+
+    obj.getGravity = function(){
+        return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Gravity');
+    }
+
+
 
     obj.insertSensor = function (sensor) {
         return $http.post(serviceBase + 'sensors', sensor).then(function (results) {
@@ -138,14 +175,14 @@ app.factory("services", ['$http', function($http) {
 
 app.controller('listUsersCtrl', function ($scope, services) {
     services.getUsers().then(function(data){
-        console.log(data.data.users)
+       // console.log(data.data.users)
         $scope.users = data.data.users;
     });
 });
 
 app.controller('listAdminsCtrl', function ($scope, services) {
     services.getAdmins().then(function(data){
-        console.log(data.data.admins)
+        //console.log(data.data.admins)
         $scope.admins = data.data.admins;
     });
 });
@@ -153,22 +190,306 @@ app.controller('listAdminsCtrl', function ($scope, services) {
 
 app.controller('listObjectifsCtrl', function ($scope, services) {
     services.getObjectifs().then(function(data){
-        console.log(data.data.objectifs)
+        //console.log(data.data.objectifs)
         $scope.objectifs = data.data.objectifs;
     });
 });
 
 app.controller('listRulesCtrl', function ($scope, services) {
     services.getRules().then(function(data){
-        console.log(data.data.rules)
+        //console.log(data.data.rules)
         $scope.rules = data.data.rules;
     });
 });
 
 app.controller('listSensorsCtrl', function ($scope, services) {
     services.getSensors().then(function(data){
-        console.log(data.data.sensors)
+        //console.log(data.data.sensors)
         $scope.sensors = data.data.sensors;
+    });
+});
+
+
+//HeartRate
+app.controller('ecgCtrl', function ($scope, services) {
+    services.getHeartRate().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Heart Rate');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Gyroscope
+app.controller('gyroscopeCtrl', function ($scope, services) {
+    services.getGyroscope().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Gyroscope');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Light
+app.controller('lightCtrl', function ($scope, services) {
+    services.getLight().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Light');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Linear Acceleration
+app.controller('linearAccelerationCtrl', function ($scope, services) {
+    services.getLinearAcceleration().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Linear Acceleration');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Gravity
+app.controller('gravityCtrl', function ($scope, services) {
+    services.getGyroscope().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Gravity');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Magnetic Field
+app.controller('magneticFieldCtrl', function ($scope, services) {
+    services.getMagneticField().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Magnetic Field');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Rotation Vector
+app.controller('rotationVectorCtrl', function ($scope, services) {
+    services.getRotationVector().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Rotation Vector');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Step Counter
+app.controller('stepCounterCtrl', function ($scope, services) {
+    services.getStepCounter().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Step Counter');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+    });
+});
+
+
+//Accelerometer
+app.controller('accelerometerCtrl', function ($scope, services) {
+    services.getAccelerometer().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+
+        $scope.chart = null;
+
+
+
+        var rowValues = [];
+        rowValues[0]=('Accelerometer');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                    //['data1', 30, 200, 100, 400, 150, 250]
+                    //['data2', 50, 20, 10, 40, 15, 25]
+                ]
+            }
+        });
+
+
     });
 });
 
@@ -361,10 +682,55 @@ app.config(['$routeProvider',
           controller: 'listObjectifsCtrl'
       })
         .when('/rules', {
-          title: 'Rules',
-          templateUrl: 'partials/rules.html',
-          controller: 'listRulesCtrl'
-      })
+            title: 'Rules',
+            templateUrl: 'partials/rules.html',
+            controller: 'listRulesCtrl'
+        })
+        .when('/ecg', {
+            title: 'ECG',
+            templateUrl: 'partials/ecg.html',
+            controller: 'ecgCtrl'
+        })
+        .when('/accelerometer', {
+            title: 'Accelerometer',
+            templateUrl: 'partials/accelerometer.html',
+            controller: 'accelerometerCtrl'
+        })
+        .when('/gyroscope', {
+            title: 'Gyroscope',
+            templateUrl: 'partials/gyroscope.html',
+            controller: 'gyroscopeCtrl'
+        })
+        .when('/light', {
+            title: 'Light',
+            templateUrl: 'partials/light.html',
+            controller: 'lighteCtrl'
+        })
+        .when('/linearAcceleration', {
+            title: 'Linear Acceleration',
+            templateUrl: 'partials/linearAcceleration.html',
+            controller: 'linearAccelerationCtrl'
+        })
+        .when('/magneticField', {
+            title: 'Magnetic Field',
+            templateUrl: 'partials/magneticField.html',
+            controller: 'magneticFieldCtrl'
+        })
+        .when('/rotationVector', {
+            title: 'Rotation Vector',
+            templateUrl: 'partials/rotationVector.html',
+            controller: 'rotationVectorCtrl'
+        })
+        .when('/stepCounter', {
+            title: 'Step Counter',
+            templateUrl: 'partials/stepCounter.html',
+            controller: 'stepCounterCtrl'
+        })
+        .when('/gravity', {
+            title: 'Gravity',
+            templateUrl: 'partials/gravity.html',
+            controller: 'gravityCtrl'
+        })
         .when('/edit-user/:userID', {
             title: 'Edit Users',
             templateUrl: 'partials/edit-user.html',

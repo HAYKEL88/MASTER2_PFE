@@ -65,7 +65,7 @@ exports.findByUserAndName = function(req, res) {
                 //res.send({'error':'An error has occurred'});
 				res.send({'Error':'An error has occurred'});
             } else {
-                console.log('Success: ' + JSON.stringify(item));
+               // console.log('Success: ' + JSON.stringify(item));
                 res.jsonp({"sensors":item});
 				
 				//res.send({'Success':'sensor succesfully signed In'});
@@ -80,6 +80,9 @@ exports.findByUserAndName = function(req, res) {
  
  ///////////////////////////////////////////////////////////////////////////////////////////
  
+ 
+ 
+
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving sensor: ' + id);
