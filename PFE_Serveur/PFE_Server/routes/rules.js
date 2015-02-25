@@ -66,6 +66,32 @@ exports.addrule = function(req, res) {
 }
  
   ///////////////////////////////////////////////////////////////////////////////////////////
+  
+
+
+exports.findByAdminEmail = function(req, res) {
+    console.log(req.params);
+    var email = req.params.adminEmail;
+     db.collection('rules', function(err, collection) {
+        collection.find({'adminEmail': email}).toArray( function(err, item) {
+            if (err) {
+                //res.send({'error':'An error has occurred'});
+				res.send({'Error':'An error has occurred'});
+            } else {
+                console.log('Success: ' + JSON.stringify(item));
+                res.jsonp({"rules":item});
+				
+				//res.send({'Success':'sensor succesfully signed In'});
+            }
+        });
+    });
+	
+	
+};
+
+
+ 
+ ///////////////////////////////////////////////////////////////////////////////////////////
 
 exports.updaterule = function(req, res) {
     var id = req.params.id;

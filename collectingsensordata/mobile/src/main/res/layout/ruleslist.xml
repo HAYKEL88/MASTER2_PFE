@@ -22,43 +22,45 @@
         android:layout_alignBottom="@+id/tvWelcomeUser"
         android:layout_marginLeft="59dp"
         android:layout_toRightOf="@+id/tvWelcomeUser"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvWelcomeUser"
-        android:layout_below="@+id/tvWelcomeUser"
-        android:layout_marginTop="44dp"
         android:text="Description :"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignTop="@+id/tvRuleDescription"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/tvRuleDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignLeft="@+id/tvRuleName"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_below="@+id/tvRuleName"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/tvRuleName"
+        android:layout_above="@+id/tvFormula" />
 
     <TextView
         android:id="@+id/tvFormula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvRuleDescription"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="16dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_toEndOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvFormula"
-        android:layout_alignLeft="@+id/textView2"
-        android:text="Link :"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="Formula :"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="73dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

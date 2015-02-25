@@ -2,44 +2,31 @@ package edu.polytech.pfe.collectingsensordata;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import edu.polytech.pfe.collectingsensordata.WebServices.WebServiceProperties;
 import edu.polytech.pfe.collectingsensordata.pojo.Service;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.R.string;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.ParseException;
+
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -52,10 +39,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -192,9 +177,9 @@ public class WelcomeActivity extends ActionBarActivity {
                 convertView = vi.inflate(R.layout.serviceslist, null);
 
                 holder = new ViewHolder();
-                holder.name = (TextView) convertView.findViewById(R.id.tvObjectifName);
-                holder.description = (TextView) convertView.findViewById(R.id.tvObjectifPriority);
-                holder.link = (TextView) convertView.findViewById(R.id.tvObjectifComments);
+                holder.name = (TextView) convertView.findViewById(R.id.tvRuleName);
+                holder.description = (TextView) convertView.findViewById(R.id.tvRuleDescription);
+                holder.link = (TextView) convertView.findViewById(R.id.tvFormula);
 
 
                 convertView.setTag(holder);

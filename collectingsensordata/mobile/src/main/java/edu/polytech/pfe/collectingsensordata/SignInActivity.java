@@ -25,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.polytech.pfe.collectingsensordata.WebServices.WebServiceProperties;
+import edu.polytech.pfe.collectingsensordata.pojo.Admin;
 import edu.polytech.pfe.collectingsensordata.pojo.Objectif;
 import edu.polytech.pfe.collectingsensordata.pojo.Session;
 import edu.polytech.pfe.collectingsensordata.pojo.User;
@@ -47,6 +48,7 @@ public class SignInActivity extends Activity {
     EditText etPassword;
     private static final String SERVICE_URL = (new WebServiceProperties()).getURL()+"users/signIn";
     ArrayList<User> usersList=new ArrayList<User>();
+    ArrayList<Admin> adminsList=new ArrayList<Admin>();
 
 
     @Override
@@ -62,7 +64,7 @@ public class SignInActivity extends Activity {
 
 
     public void signIn(View view) {
-
+/*
         Intent intent =null;
         if(etEmail.getText().toString().equals("admin@admin.com")
                 &&etPassword.getText().toString().equals("admin"))
@@ -76,12 +78,13 @@ public class SignInActivity extends Activity {
 
         else
         {
-
             authenticate();
-
             intent = new Intent(this, WelcomeUserActivity.class);
-
-
+        }
+        */
+        if(etEmail.getText().toString().length()>0
+                &&etPassword.getText().toString().length()>0) {
+            authenticate();
         }
 
     }
@@ -111,14 +114,41 @@ public class SignInActivity extends Activity {
             if(response.length()>0)
             {
                 JSONObject jso = new JSONObject(response);
+                //Try Admin
+                Admin adminTemp;
+                JSONArray admins = jso.getJSONArray("admins");
+                int adminsLength=jso.getJSONArray("admins").length();
+                int i=0, j=0,k=0;
+                for(i=0;i<adminsLength;i++)
+                {
+                    adminTemp=new Admin();
+                    adminTemp.setId(admins.getJSONObject(i).getString("_id"));
+                    adminTemp.setFirstName(admins.getJSONObject(i).getString("firstName"));
+                    adminTemp.setLastName(admins.getJSONObject(i).getString("lastName"));
+                    adminTemp.setEmail(admins.getJSONObject(i).getString("email"));
+                    adminTemp.setPassword(admins.getJSONObject(i).getString("password"));
+                    adminsList.add(adminTemp);
+                }
+                if(adminsLength>0) {
+                    tvResponse.setText("Authentication Succeeded : Welcome\n" + adminsList.get(0).getFirstName() + " " + adminsList.get(0).getLastName());
+                    Session userSession = new Session();
+                    userSession.setAdmin(adminsList.get(0));
+                    etEmail.setText("");
+                    etPassword.setText("");
+                    tvResponse.setText("");
+                    Intent intent = new Intent(this, WelcomeAdminActivity.class);
+                    startActivity(intent);
+                }
 
+
+
+
+
+                //Try User
                 User userTemp;
-                List<Objectif> objectifsList=null;
-                Objectif objectifTemp;
-
                 JSONArray users = jso.getJSONArray("users");
                 int usersLength=jso.getJSONArray("users").length();
-                int i=0, j=0,k=0;
+
                 for(i=0;i<usersLength;i++)
                 {
                     userTemp=new User();
@@ -131,29 +161,19 @@ public class SignInActivity extends Activity {
                     userTemp.setEmail(users.getJSONObject(i).getString("email"));
                     userTemp.setPassword(users.getJSONObject(i).getString("password"));
                     userTemp.setSex(users.getJSONObject(i).getString("sex"));
-
-                   /* objectifsList=new ArrayList<Objectif>();
-                    k=users.getJSONObject(i).getJSONArray("objectifs").length();
-                    for(j=0;j<k;j++)
-                    {
-                        objectifTemp=new Objectif();
-                        objectifTemp.setName(users.getJSONObject(i).getJSONArray("objectifs").getJSONObject(j).getString("name"));
-                        objectifTemp.setPriority(users.getJSONObject(i).getJSONArray("objectifs").getJSONObject(j).getString("priority"));
-                        objectifTemp.setComments(users.getJSONObject(i).getJSONArray("objectifs").getJSONObject(j).getString("comments"));
-                        objectifsList.add(objectifTemp);
-                    }
-
-
-                    userTemp.setObjectifs(objectifsList);
-*/
                     usersList.add(userTemp);
                 }
+                if(usersLength>0) {
+                    tvResponse.setText("Authentication Succeeded : Welcome\n" + usersList.get(0).getFirstName() + " " + usersList.get(0).getLastName());
+                    Session userSession = new Session();
+                    userSession.setUser(usersList.get(0));
+                    etEmail.setText("");
+                    etPassword.setText("");
+                    tvResponse.setText("");
+                    Intent intent = new Intent(this, WelcomeUserActivity.class);
+                    startActivity(intent);
+                }
 
-                tvResponse.setText("Authentication Succeeded : Welcome\n"+usersList.get(0).getFirstName()+" "+usersList.get(0).getLastName());
-                Session userSession = new Session();
-                userSession.setUser(usersList.get(0));
-                Intent intent = new Intent(this, WelcomeUserActivity.class);
-                startActivity(intent);
             }
             else
 

@@ -158,8 +158,7 @@
         android:layout_height="wrap_content"
         android:onClick="updateProfile"
         android:text="@string/button_updateProfile"
-        android:layout_alignBaseline="@+id/tvResponse"
-        android:layout_alignBottom="@+id/tvResponse"
+        android:layout_above="@+id/tvResponse"
         android:layout_alignStart="@+id/radioGroup1" />
 
     <TextView

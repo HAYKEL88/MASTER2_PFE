@@ -2,10 +2,7 @@ package edu.polytech.pfe.collectingsensordata;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,7 +29,6 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -51,7 +47,6 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import edu.polytech.pfe.collectingsensordata.WebServices.WebServiceProperties;
 import edu.polytech.pfe.collectingsensordata.pojo.Objectif;
-import edu.polytech.pfe.collectingsensordata.pojo.Service;
 import edu.polytech.pfe.collectingsensordata.pojo.Session;
 
 public class ShowObjectifsActivity extends Activity {
@@ -168,9 +163,9 @@ public class ShowObjectifsActivity extends Activity {
                 convertView = vi.inflate(R.layout.objectifslist, null);
 
                 holder = new ViewHolder();
-                holder.name = (TextView) convertView.findViewById(R.id.tvObjectifName);
-                holder.priority = (TextView) convertView.findViewById(R.id.tvObjectifPriority);
-                holder.comments = (TextView) convertView.findViewById(R.id.tvObjectifComments);
+                holder.name = (TextView) convertView.findViewById(R.id.tvRuleName);
+                holder.priority = (TextView) convertView.findViewById(R.id.tvRuleDescription);
+                holder.comments = (TextView) convertView.findViewById(R.id.tvFormula);
 
 
                 convertView.setTag(holder);

@@ -33,7 +33,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/tvObjectifName"
+        android:id="@+id/tvRuleName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvWelcomeUser"
@@ -43,20 +43,20 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/tvObjectifPriority"
+        android:id="@+id/tvRuleDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/tvObjectifName"
+        android:layout_alignLeft="@+id/tvRuleName"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/tvObjectifComments"
+        android:id="@+id/tvFormula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/tvObjectifPriority"
+        android:layout_alignLeft="@+id/tvRuleDescription"
         android:text="TextView" />
 
 </RelativeLayout>

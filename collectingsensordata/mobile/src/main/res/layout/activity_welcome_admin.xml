@@ -56,5 +56,12 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/button_showRules"
         android:onClick="rulesList"/>
+    <Button
+        android:id="@+id/addObjectif"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_addObjectif"
+        android:onClick="addObjectif"/>
 
 </LinearLayout>

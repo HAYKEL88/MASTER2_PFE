@@ -53,5 +53,11 @@ public class WelcomeAdminActivity extends Activity {
     }
 
 
+    public void addObjectif(View view) {
+        Intent intent = new Intent(this, AddObjectifAdminActivity.class);
+        startActivity(intent);
+    }
+
+
 
 }

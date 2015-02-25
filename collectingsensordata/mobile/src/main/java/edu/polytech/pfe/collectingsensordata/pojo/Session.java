@@ -8,7 +8,9 @@ import java.util.Date;
 
 public class Session {
 
-	public static User user = new User();
+    public static User user = new User();
+    public static Admin admin = new Admin();
+
 	public static String dateBegin;
 	public static String dateEnd;
 	
@@ -37,9 +39,12 @@ public class Session {
 	public static void setDateEnd(String dateEnd) {
 		Session.dateEnd = dateEnd;
 	}
-	
-	
-	
-	
-	
+
+    public static Admin getAdmin() {
+        return admin;
+    }
+
+    public static void setAdmin(Admin admin) {
+        Session.admin = admin;
+    }
 }

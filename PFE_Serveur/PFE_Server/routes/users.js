@@ -82,19 +82,44 @@ exports.findById = function(req, res) {
 exports.signIn = function(req, res) {
     var user = req.body;
     console.log('Sign In user: ' + JSON.stringify(user));
+	
+	var item1;
+	
+	
      db.collection('users', function(err, collection) {
         collection.find(user).toArray( function(err, item) {
             if (err) {
                 //res.send({'error':'An error has occurred'});
 				res.send({'Error':'An error has occurred'});
             } else {
-                console.log('Success: ' + JSON.stringify(item));
-                res.jsonp({"users":item});
+                //console.log('Success: ' + JSON.stringify(item));
+                //res.jsonp({"users":item});
+				item1 =item;
+				//res.send({'Success':'User succesfully signed In'});
+            }
+        });
+    });
+	
+	
+	
+	
+	db.collection('admins', function(err, collection) {
+        collection.find(user).toArray( function(err2, item2) {
+            if (err2) {
+                //res.send({'error':'An error has occurred'});
+				res.send({'Error':'An error has occurred'});
+            } else {
+				console.log('Success: ' + JSON.stringify(item2));
+				console.log('***************************************************');
+				console.log('Success: ' + JSON.stringify(item1));
+                res.jsonp({"admins":item2,"users":item1});
 				
 				//res.send({'Success':'User succesfully signed In'});
             }
         });
     });
+	
+	
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

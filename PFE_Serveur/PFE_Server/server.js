@@ -75,6 +75,7 @@ app.delete('/services/:id', service.deleteservice);
 //rules
 app.get('/rules', rule.findAll);
 app.get('/rules/:id', rule.findById)
+app.get('/rules/email/:adminEmail', rule.findByAdminEmail)
 app.post('/rules', rule.addrule);
 app.put('/rules/:id', rule.updaterule);
 app.post('/rules/:id', rule.updaterule);
