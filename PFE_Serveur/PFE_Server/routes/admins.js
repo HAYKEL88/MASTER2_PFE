@@ -114,8 +114,29 @@ exports.findAll = function(req, res) {
  
 exports.addadmin = function(req, res) {
     var admin = req.body;
-	console.log(admin);
-    console.log('Adding admin: ' + JSON.stringify(admin));
+	
+	
+	
+	var result;
+	// Verify if user Email exist
+	db.collection('admins', function(err, collection) {
+        collection.find({'email': req.body.email}).toArray( function(err, item) {
+            if (err) {
+                
+            } else {
+				result =item;
+            }
+        });
+    });
+	
+	
+	if(result == undefined)
+	{
+	res.send({'Error':'Admin Email exist, Please shoose another'});
+	
+	}
+	else
+	{
     db.collection('admins', function(err, collection) {
         collection.insert(admin, {safe:true}, function(err, result) {
             if (err) {
@@ -128,6 +149,8 @@ exports.addadmin = function(req, res) {
             }
         });
     });
+	
+	}
 }
  
   ///////////////////////////////////////////////////////////////////////////////////////////
@@ -135,8 +158,30 @@ exports.addadmin = function(req, res) {
 exports.updateadmin = function(req, res) {
     var id = req.params.id;
     var admin = req.body;
-    console.log('Updating admin: ' + id);
-    console.log(JSON.stringify(admin));
+    
+	
+	
+	
+	var result;
+	// Verify if user Email exist
+	db.collection('admins', function(err, collection) {
+        collection.find({'email': req.body.email}).toArray( function(err, item) {
+            if (err) {
+                
+            } else {
+				result =item;
+            }
+        });
+    });
+	
+	
+	if(result == undefined)
+	{
+	res.send({'Error':'Admin Email exist, Please shoose another'});
+	
+	}
+	else
+	{
     db.collection('admins', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, admin, {safe:true}, function(err, result) {
             if (err) {
@@ -149,6 +194,8 @@ exports.updateadmin = function(req, res) {
             }
         });
     });
+	
+	}
 }
   ///////////////////////////////////////////////////////////////////////////////////////////
 

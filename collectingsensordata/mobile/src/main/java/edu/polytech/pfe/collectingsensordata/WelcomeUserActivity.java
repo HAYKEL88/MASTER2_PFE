@@ -25,6 +25,8 @@ public class WelcomeUserActivity extends Activity {
     Button stopButton;
     private RemoteSensorManager remoteSensorManager;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,27 @@ public class WelcomeUserActivity extends Activity {
         Session sessionUser =new Session();
         tvWelcomeUser.setText("Welcome : "+sessionUser.getUser().getFirstName()+" "+
                 sessionUser.getUser().getLastName());
+    }
+
+
+
+    @Override
+    public void onStop () {
+        remoteSensorManager.stopMeasurement();
+        stopButton.setEnabled(false);
+        startButton.setEnabled(true);
+        super.onStop();
+
+    }
+
+
+    @Override
+    public void onDestroy () {
+        remoteSensorManager.stopMeasurement();
+        stopButton.setEnabled(false);
+        startButton.setEnabled(true);
+        super.onStop();
+
     }
 
     public void updateProfile(View view) {
@@ -80,6 +103,12 @@ public class WelcomeUserActivity extends Activity {
     }
 
 
+    public void startGPS(View view) {
+        Intent intent = new Intent(this, GpsActivity.class);
+        startActivity(intent);
+    }
+
+
 
 
     private void notifyUSerForNewSensor(Sensor sensor) {
@@ -87,7 +116,8 @@ public class WelcomeUserActivity extends Activity {
         stopButton.setEnabled(true);
         remoteSensorManager.startMeasurement();
 
-        Toast.makeText(this, "New Sensor!\n" + sensor.getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "New Sensor!\n" + sensor.getName()+"\n" +
+                "\n", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -99,6 +129,11 @@ public class WelcomeUserActivity extends Activity {
 
 
 
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 }

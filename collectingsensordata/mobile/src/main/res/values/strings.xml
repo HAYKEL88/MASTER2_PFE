@@ -65,6 +65,7 @@
     <string name="button_showReclamations">Show Reclamations</string>
     <string name="button_showRules">Show Rules</string>
     <string name="button_addRule">Add Rule</string>
+    <string name="button_startGPS">Start GPS</string>
     <string name="button_addWicknesses">Add Wicknesses</string>
     <string name="button_startCollectingData">Start Collecting Data</string>
     <string name="button_stopCollectingData">Stop Collecting Data</string>
@@ -80,5 +81,6 @@
     <string name="title_activity_add_objectif_admin">AddObjectifAdminActivity</string>
     <string name="title_activity_show_objectifs_admin">ShowObjectifsAdminActivity</string>
     <string name="title_activity_show_rules">ShowRulesActivity</string>
+    <string name="title_activity_gps">GpsActivity</string>
 
 </resources>

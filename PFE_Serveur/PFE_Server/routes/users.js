@@ -86,6 +86,8 @@ exports.signIn = function(req, res) {
 	var item1;
 	
 	
+	
+	
      db.collection('users', function(err, collection) {
         collection.find(user).toArray( function(err, item) {
             if (err) {
@@ -139,8 +141,30 @@ exports.findAll = function(req, res) {
  
 exports.adduser = function(req, res) {
     var user = req.body;
-	console.log(user);
-    console.log('Adding user: ' + JSON.stringify(user));
+	
+	
+	
+	
+	var result;
+	// Verify if user Email exist
+	db.collection('users', function(err, collection) {
+        collection.find({'email': req.body.email}).toArray( function(err, item) {
+            if (err) {
+                
+            } else {
+				result =item;
+            }
+        });
+    });
+	
+	
+	if(result == undefined)
+	{
+	res.send({'Error':'User Email exist, Please shoose another'});
+	
+	}
+	else
+	{
     db.collection('users', function(err, collection) {
         collection.insert(user, {safe:true}, function(err, result) {
             if (err) {
@@ -153,6 +177,8 @@ exports.adduser = function(req, res) {
             }
         });
     });
+	
+	}
 }
  
   ///////////////////////////////////////////////////////////////////////////////////////////
@@ -160,8 +186,31 @@ exports.adduser = function(req, res) {
 exports.updateuser = function(req, res) {
     var id = req.params.id;
     var user = req.body;
-    console.log('Updating user: ' + id);
-    console.log(JSON.stringify(user));
+    
+	
+	
+	
+	
+	var result;
+	// Verify if user Email exist
+	db.collection('users', function(err, collection) {
+        collection.find({'email': req.body.email}).toArray( function(err, item) {
+            if (err) {
+                
+            } else {
+				result =item;
+            }
+        });
+    });
+	
+	
+	if(result == undefined)
+	{
+	res.send({'Error':'User Email exist, Please shoose another'});
+	
+	}
+	else
+	{
     db.collection('users', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, user, {safe:true}, function(err, result) {
             if (err) {
@@ -174,6 +223,7 @@ exports.updateuser = function(req, res) {
             }
         });
     });
+	}
 }
 
   ///////////////////////////////////////////////////////////////////////////////////////////

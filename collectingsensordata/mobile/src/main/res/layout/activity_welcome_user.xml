@@ -60,6 +60,14 @@
         android:text="@string/button_stopCollectingData"
         android:onClick="stopCollectingData"/>
 
+    <Button
+        android:id="@+id/startGPS"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/button_startGPS"
+        android:onClick="startGPS"/>
+
 
 
 </LinearLayout>

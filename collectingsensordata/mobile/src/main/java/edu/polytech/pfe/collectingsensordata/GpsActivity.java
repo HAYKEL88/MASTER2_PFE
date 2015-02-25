@@ -1,23 +1,24 @@
 package edu.polytech.pfe.collectingsensordata;
 
+
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
-
-import edu.polytech.pfe.collectingsensordata.WebServices.WebServiceProperties;
-import edu.polytech.pfe.collectingsensordata.data.Sensor;
-import edu.polytech.pfe.collectingsensordata.pojo.Session;
-import edu.polytech.pfe.collectingsensordata.shared.DataMapKeys;
-import com.google.android.gms.wearable.DataEvent;
-import com.google.android.gms.wearable.DataEventBuffer;
-import com.google.android.gms.wearable.DataItem;
-import com.google.android.gms.wearable.DataMap;
-import com.google.android.gms.wearable.DataMapItem;
-import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.WearableListenerService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -38,146 +39,145 @@ import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
-public class SensorReceiverService extends WearableListenerService {
-    private static final String TAG = "CollectingSensorData/SensorReceiverService";
+import edu.polytech.pfe.collectingsensordata.WebServices.WebServiceProperties;
+import edu.polytech.pfe.collectingsensordata.data.Sensor;
+import edu.polytech.pfe.collectingsensordata.pojo.Session;
+
+public class GpsActivity extends Activity {
     private static final String SERVICE_URL = (new WebServiceProperties()).getURL() + "sensors";
-    private RemoteSensorManager sensorManager;
 
-    private Date lastSendDate, secondSendDate;
+    private TextView latitude;
+    private TextView longitude;
+    private TextView choice;
+    private CheckBox fineAcc;
+    private Button choose;
+    private TextView provText;
+    private LocationManager locationManager;
+    private String provider;
+    private MyLocationListener mylistener;
+    private Criteria criteria;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        sensorManager = RemoteSensorManager.getInstance(this);
-
-        lastSendDate = new Date();
-    }
-
-    @Override
-    public void onPeerConnected(Node peer) {
-        super.onPeerConnected(peer);
-
-        Log.i(TAG, "Connected: " + peer.getDisplayName() + " (" + peer.getId() + ")");
-    }
+    /** Called when the activity is first created. */
 
     @Override
-    public void onPeerDisconnected(Node peer) {
-        super.onPeerDisconnected(peer);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gps);
+        latitude = (TextView) findViewById(R.id.lat);
+        longitude = (TextView) findViewById(R.id.lon);
+        provText = (TextView) findViewById(R.id.prov);
+        choice = (TextView) findViewById(R.id.choice);
+        fineAcc = (CheckBox) findViewById(R.id.fineAccuracy);
+        choose = (Button) findViewById(R.id.chooseRadio);
 
-        Log.i(TAG, "Disconnected: " + peer.getDisplayName() + " (" + peer.getId() + ")");
-    }
+        // Get the location manager
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        // Define the criteria how to select the location provider
+        criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_LOW);	//default
 
-    @Override
-    public void onDataChanged(DataEventBuffer dataEvents) {
-        Log.d(TAG, "onDataChanged()");
-
-        for (DataEvent dataEvent : dataEvents) {
-            if (dataEvent.getType() == DataEvent.TYPE_CHANGED) {
-                DataItem dataItem = dataEvent.getDataItem();
-                Uri uri = dataItem.getUri();
-                String path = uri.getPath();
-
-                if (path.startsWith("/sensors/")) {
-                    unpackSensorData(
-                            Integer.parseInt(uri.getLastPathSegment()),
-                            DataMapItem.fromDataItem(dataItem).getDataMap()
-                    );
+        // user defines the criteria
+        choose.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if(fineAcc.isChecked()){
+                    criteria.setAccuracy(Criteria.ACCURACY_FINE);
+                    choice.setText("fine accuracy selected");
+                }else {
+                    criteria.setAccuracy(Criteria.ACCURACY_LOW);
+                    choice.setText("Low accuracy selected");
                 }
             }
+        });
+        criteria.setCostAllowed(false);
+        // get the best provider depending on the criteria
+        provider = locationManager.getBestProvider(criteria, false);
+
+        // the last known location of this provider
+        Location location = locationManager.getLastKnownLocation(provider);
+
+        mylistener = new MyLocationListener();
+
+        if (location != null) {
+            mylistener.onLocationChanged(location);
+        } else {
+            // leads to the settings because there is no last known location
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
+        }
+        // location updates: at least 1 meter and 200millsecs change
+        locationManager.requestLocationUpdates(provider, 200, 1, mylistener);
+    }
+
+    private class MyLocationListener implements LocationListener {
+
+        @Override
+        public void onLocationChanged(Location location) {
+            // Initialize the location fields
+            latitude.setText("Latitude: "+String.valueOf(location.getLatitude()));
+            longitude.setText("Longitude: "+String.valueOf(location.getLongitude()));
+            provText.setText(provider + " provider has been selected.");
+
+            sendDataToServer("GPS Location",(location.getLatitude()+","+location.getLongitude()),String.valueOf(location.getAccuracy()));
+
+            sendDataToServer("GPS Speed",String.valueOf(location.getSpeed()),String.valueOf(location.getAccuracy()));
+
+            Toast.makeText(GpsActivity.this,  "Location changed!",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            Toast.makeText(GpsActivity.this, provider + "'s status changed to "+status +"!",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            Toast.makeText(GpsActivity.this, "Provider " + provider + " enabled!",
+                    Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            Toast.makeText(GpsActivity.this, "Provider " + provider + " disabled!",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void unpackSensorData(int sensorType, DataMap dataMap) {
-        int accuracy = dataMap.getInt(DataMapKeys.ACCURACY);
-        long timestamp = dataMap.getLong(DataMapKeys.TIMESTAMP);
-        float[] values = dataMap.getFloatArray(DataMapKeys.VALUES);
-
-        Log.d(TAG, "Received sensor data " + sensorType + " = " + Arrays.toString(values));
-
-        sensorManager.addSensorData(sensorType, accuracy, timestamp, values);
-
-        secondSendDate = new Date();
-
-        long diff = secondSendDate.getTime() - lastSendDate.getTime();
 
 
-        Log.d(TAG, String.valueOf(secondSendDate.getTime()));
-        Log.d(TAG, String.valueOf(lastSendDate.getTime()));
 
-
-        long diffSeconds = diff / 1000 % 60;
-        long diffMinutes = diff / (60 * 1000) % 60;
-        long diffHours = diff / (60 * 60 * 1000) % 24;
-        long diffDays = diff / (24 * 60 * 60 * 1000);
-        Log.d(TAG, "DiffMinutes " + diffMinutes);
-        Log.d(TAG, "diffHours " + diffHours);
-
-        try {
-            // Send Datas every 10 minutes
-            if (((diffMinutes > 9) && (diffHours == 0)) || ((diffMinutes == (-50)) && (diffHours == 1))) {
-                int i = 0;
-                for (i = 0; i < sensorManager.getSensors().size(); i++) {
-
-                    if ((sensorManager.getSensors().get(i).getDataPoints() != null) && (sensorManager.getSensors().get(i).getDataPoints().size() > 0)) {
-                        sendDataToServer(sensorManager.getSensors().get(i));
-
-                        // A vérifier
-                        sensorManager.getSensors().get(i).getDataPoints().clear();
-                    }
-                }
-                Log.d(TAG, "condition if ************ ");
-                lastSendDate = new Date();
-                Log.d(TAG, String.valueOf(lastSendDate.getTime()));
-            }
-
-        } catch (Exception ex) {
-            Log.d(TAG, "Exception " + ex.getMessage());
-        }
-
-
-    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-    public void sendDataToServer(Sensor sensor)
+    public void sendDataToServer(String dataName,String value, String accuracy)
     {
 
-        DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
-        DateFormat dateFormat2 = new SimpleDateFormat("HH:mm:ss");
+                DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+                DateFormat dateFormat2 = new SimpleDateFormat("HH:mm:ss");
+                Date temp=new Date();
 
-
-
-        int i=0,j=0;
-        for(i=0;i<sensor.getDataPoints().size();i++) {
-            for(j=0;j<sensor.getDataPoints().get(i).getValues().length;j++) {
                 WebServiceTask wst = new WebServiceTask(WebServiceTask.POST_TASK, this, "Posting Sensor Data...");
 
-                wst.addNameValuePair("name", sensor.getName());
-                wst.addNameValuePair("value", String.valueOf(sensor.getDataPoints().get(j).getValues()[j]));
-                wst.addNameValuePair("date", dateFormat1.format(secondSendDate));
-                wst.addNameValuePair("time", dateFormat2.format(secondSendDate));
+                wst.addNameValuePair("name", dataName);
+                wst.addNameValuePair("value", value);
+                wst.addNameValuePair("date", dateFormat1.format(temp));
+                wst.addNameValuePair("time", dateFormat2.format(temp));
                 wst.addNameValuePair("userEmail", new Session().getUser().getEmail());
-                wst.addNameValuePair("accuracy", String.valueOf(sensor.getDataPoints().get(j).getAccuracy()));
-                wst.addNameValuePair("timestamp", String.valueOf(sensor.getDataPoints().get(j).getTimestamp()));
+                wst.addNameValuePair("accuracy", accuracy);
+                wst.addNameValuePair("timestamp", "0");
 
                 // the passed String is the URL we will POST to
                 wst.execute(new String[]{SERVICE_URL});
 
-                Log.d(TAG, "Posting sensor Data to server");
-            }
-        }
     }
 
 
@@ -250,7 +250,7 @@ public class SensorReceiverService extends WearableListenerService {
         protected void onPreExecute() {
 
 
-         //   showProgressDialog();
+            //   showProgressDialog();
 
         }
 
@@ -284,7 +284,7 @@ public class SensorReceiverService extends WearableListenerService {
         @Override
         protected void onPostExecute(String response) {
 
-        //    handleResponse(response);
+            //    handleResponse(response);
 //            pDlg.dismiss();
 
         }
@@ -386,6 +386,26 @@ public class SensorReceiverService extends WearableListenerService {
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
