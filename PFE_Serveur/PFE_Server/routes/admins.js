@@ -161,27 +161,6 @@ exports.updateadmin = function(req, res) {
     
 	
 	
-	
-	var result;
-	// Verify if user Email exist
-	db.collection('admins', function(err, collection) {
-        collection.find({'email': req.body.email}).toArray( function(err, item) {
-            if (err) {
-                
-            } else {
-				result =item;
-            }
-        });
-    });
-	
-	
-	if(result == undefined)
-	{
-	res.send({'Error':'Admin Email exist, Please shoose another'});
-	
-	}
-	else
-	{
     db.collection('admins', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, admin, {safe:true}, function(err, result) {
             if (err) {
@@ -195,7 +174,7 @@ exports.updateadmin = function(req, res) {
         });
     });
 	
-	}
+
 }
   ///////////////////////////////////////////////////////////////////////////////////////////
 

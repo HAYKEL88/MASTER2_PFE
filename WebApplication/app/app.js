@@ -118,6 +118,14 @@ app.factory("services", ['$http', function($http) {
         return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Heart Rate');
     }
 
+    obj.getGpsSpeed = function(){
+        return $http.get(serviceBase + 'sensors/email/test@test.com/name/GPS Speed');
+    }
+
+    obj.getGpsLocation = function(){
+        return $http.get(serviceBase + 'sensors/email/test@test.com/name/GPS Location');
+    }
+
     obj.getAccelerometer = function(){
         return $http.get(serviceBase + 'sensors/email/pfe@pfe.pfe/name/Accelerometer');
     }
@@ -457,6 +465,77 @@ app.controller('stepCounterCtrl', function ($scope, services) {
     });
 });
 
+//GPS Speed
+app.controller('gpsSpeedCtrl', function ($scope, services) {
+    services.getGpsSpeed().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+
+        var rowValues = [];
+        rowValues[0]=('GPS Location');
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i = 0; i < 100; i++){
+            rowValues[i+1]=(data.data.sensors[i].value);
+        }
+
+
+        $scope.chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    rowValues
+                ]
+            }
+        });
+
+
+
+
+
+
+    });
+});
+
+
+//GPS Location
+app.controller('gpsLocationCtrl', function ($scope, services) {
+    services.getGpsLocation().then(function(data){
+        //console.log(data.data.sensors)
+        $scope.sensors = data.data.sensors;
+
+
+        var myCenter = new google.maps.LatLng(parseFloat(data.data.sensors[0].value.substring(0,data.data.sensors[0].value.indexOf(','))),parseFloat(data.data.sensors[0].value.substring(data.data.sensors[0].value.indexOf(',')+1)) );
+
+        var mapProp = {
+            center:myCenter,
+            zoom:12,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+        //for(var i = 0; i < data.data.sensors.length; i++){
+        for(var i =0;i<100;i++)
+        {
+            var myCenter = new google.maps.LatLng(parseFloat(data.data.sensors[i].value.substring(0,data.data.sensors[i].value.indexOf(','))),parseFloat((data.data.sensors[i].value.substring(data.data.sensors[i].value.indexOf(',')+1)) ));
+            var marker=new google.maps.Marker({
+                position:myCenter
+            });
+
+            marker.setMap(map);
+        }
+
+
+
+
+
+
+
+    });
+});
+
 
 //Accelerometer
 app.controller('accelerometerCtrl', function ($scope, services) {
@@ -496,10 +575,10 @@ app.controller('accelerometerCtrl', function ($scope, services) {
 
 // editUserCtrl
 app.controller('editUserCtrl', function ($scope, $rootScope, $location, $routeParams, services, user) {
-   // var userID = ($routeParams.userID) ? parseInt($routeParams.userID) : 0;
+    var userID = ($routeParams.userID) ? $routeParams.userID : 0;
     var userID = $routeParams.userID;
-    //$rootScope.title = (userID > 0) ? 'Edit User' : 'Add User';
-    //$scope.buttonText = (userID > 0) ? 'Update User' : 'Add New User';
+     $rootScope.title = (userID == 0) ? 'Add User' : 'Edit User';
+    $scope.buttonText = (userID == 0) ?  'Add New User' : 'Update User';
     $rootScope.title = 'Edit User';
     $scope.buttonText = 'Update User';
     var original = user.data;
@@ -512,14 +591,16 @@ app.controller('editUserCtrl', function ($scope, $rootScope, $location, $routePa
     }
 
     $scope.deleteUser = function(user) {
-        $location.path('/');
+        $location.path('/users');
         if(confirm("Are you sure to delete user id : "+$scope.user._id)==true)
             services.deleteUser(user._id);
     };
 
+
+
     $scope.saveUser = function(user) {
-        $location.path('/');
-        if (userID <= 0) {
+        $location.path('/users');
+        if (userID == 0) {
             services.insertUser(user);
         }
         else {
@@ -730,6 +811,16 @@ app.config(['$routeProvider',
             title: 'Gravity',
             templateUrl: 'partials/gravity.html',
             controller: 'gravityCtrl'
+        })
+        .when('/gpsSpeed', {
+            title: 'GPS Speed',
+            templateUrl: 'partials/GpsSpeed.html',
+            controller: 'gpsSpeedCtrl'
+        })
+        .when('/gpsLocation', {
+            title: 'GPS Location',
+            templateUrl: 'partials/GpsLocation.html',
+            controller: 'gpsLocationCtrl'
         })
         .when('/edit-user/:userID', {
             title: 'Edit Users',

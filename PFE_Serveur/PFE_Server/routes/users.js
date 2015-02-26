@@ -131,7 +131,7 @@ exports.findAll = function(req, res) {
     db.collection('users', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.jsonp({"users":items});
-			console.log('Success: ' + JSON.stringify(items));
+			//console.log('Success: ' + JSON.stringify(items));
         });
     });
 };
@@ -186,31 +186,11 @@ exports.adduser = function(req, res) {
 exports.updateuser = function(req, res) {
     var id = req.params.id;
     var user = req.body;
-    
+     
+
+
 	
 	
-	
-	
-	var result;
-	// Verify if user Email exist
-	db.collection('users', function(err, collection) {
-        collection.find({'email': req.body.email}).toArray( function(err, item) {
-            if (err) {
-                
-            } else {
-				result =item;
-            }
-        });
-    });
-	
-	
-	if(result == undefined)
-	{
-	res.send({'Error':'User Email exist, Please shoose another'});
-	
-	}
-	else
-	{
     db.collection('users', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, user, {safe:true}, function(err, result) {
             if (err) {
@@ -218,12 +198,11 @@ exports.updateuser = function(req, res) {
                 res.send({'error':'An error has occurred'});
             } else {
                 console.log('' + result + ' User(s) updated');
-                //res.send(user);
 				res.send('User Successfully updated !');
             }
         });
     });
-	}
+	
 }
 
   ///////////////////////////////////////////////////////////////////////////////////////////
