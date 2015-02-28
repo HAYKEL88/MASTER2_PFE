@@ -75,8 +75,34 @@ exports.findAll = function(req, res) {
  
 exports.addObjectif = function(req, res) {
     var objectif = req.body;
-	console.log(objectif);
-    console.log('Adding objectif: ' + JSON.stringify(objectif));
+	
+	if(objectif.name == undefined)
+	{
+	objectif = 
+	{
+        name: req.body.objectif.name,
+        priority: req.body.objectif.priority,
+        comments: req.body.objectif.comments,
+        userEmail: req.body.objectif.userEmail,
+		admin: req.body.objectif.admin
+    }
+	}
+	
+	
+	if(objectif._id == "0")
+	{
+	//delete objectif._id;
+		objectif = 
+		{
+			name: req.body.name,
+			priority: req.body.priority,
+			comments: req.body.comments,
+			userEmail: req.body.userEmail,
+			admin: req.body.admin
+		}
+	}
+	
+	
     db.collection('objectifs', function(err, collection) {
         collection.insert(objectif, {safe:true}, function(err, result) {
             if (err) {
@@ -96,8 +122,21 @@ exports.addObjectif = function(req, res) {
 exports.updateObjectif = function(req, res) {
     var id = req.params.id;
     var objectif = req.body;
-    console.log('Updating objectif: ' + id);
-    console.log(JSON.stringify(objectif));
+    
+	if(objectif.name == undefined)
+	{
+	objectif = 
+	{
+        name: req.body.objectif.name,
+        priority: req.body.objectif.priority,
+        comments: req.body.objectif.comments,
+        userEmail: req.body.objectif.userEmail,
+		admin: req.body.objectif.admin
+    }
+	}
+	
+	
+	
     db.collection('objectifs', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, objectif, {safe:true}, function(err, result) {
             if (err) {

@@ -113,14 +113,36 @@ exports.findAll = function(req, res) {
 
  
 exports.addadmin = function(req, res) {
-    var admin = req.body;
+       var admin = req.body;
 	
+	if(admin.email == undefined)
+	{
+	admin = 
+	{
+        firstName: req.body.admin.firstName,
+        lastName: req.body.admin.lastName,
+        email: req.body.admin.email,
+        password: req.body.admin.password
+    }
+	}
+	if(admin._id == "0")
+	{
+	//delete admin._id;
+		admin = 
+		{
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			email: req.body.email,
+			password: req.body.password
+		}
+	}
 	
+
 	
 	var result;
-	// Verify if user Email exist
+	// Verify if admin Email exist
 	db.collection('admins', function(err, collection) {
-        collection.find({'email': req.body.email}).toArray( function(err, item) {
+        collection.find({'email': admin.email}).toArray( function(err, item) {
             if (err) {
                 
             } else {
@@ -132,23 +154,23 @@ exports.addadmin = function(req, res) {
 	
 	if(result == undefined)
 	{
-	res.send({'Error':'Admin Email exist, Please shoose another'});
+	db.collection('admins', function(err, collection) {
+        collection.insert(admin, {safe:true}, function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log('Success: ' + JSON.stringify(result[0]));
+                //res.send(result[0]);
+				res.send({'Success':'Admin succesfully added'});
+            }
+        });
+    });
+	
 	
 	}
 	else
 	{
-    db.collection('admins', function(err, collection) {
-        collection.insert(admin, {safe:true}, function(err, result) {
-            if (err) {
-                //res.send({'error':'An error has occurred'});
-				res.send({'Error':'An error has occurred'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                //res.send(result[0]);
-				res.send({'Success':'admin succesfully added'});
-            }
-        });
-    });
+    res.send({'Error':'Admin Email exist, Please shoose another'});
 	
 	}
 }
@@ -159,7 +181,16 @@ exports.updateadmin = function(req, res) {
     var id = req.params.id;
     var admin = req.body;
     
-	
+	if(admin.email == undefined)
+	{
+	admin = 
+	{
+        firstName: req.body.admin.firstName,
+        lastName: req.body.admin.lastName,
+        email: req.body.admin.email,
+        password: req.body.admin.password
+    }
+	}
 	
     db.collection('admins', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, admin, {safe:true}, function(err, result) {

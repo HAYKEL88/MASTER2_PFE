@@ -1,14 +1,105 @@
+<div class="navbar navbar-default" id="navbar">
+    <div class="container" id="navbar-container">
+        <div class="navbar-header">
+
+            <a href="#/ecg" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    ECG
+                </small>
+            </a>
+
+            <a href="#/accelerometer" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Accelerometer
+                </small>
+            </a>
+
+            <a href="#/gyroscope" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Gyroscope
+                </small>
+            </a>
+
+            <a href="#/light" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Light
+                </small>
+            </a>
+
+            <a href="#/linearAcceleration" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Linear Acceleration
+                </small>
+            </a>
+
+
+            <a href="#/magneticField" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Magnetic Field
+                </small>
+            </a>
+            <br/>
+
+            <a href="#/gravity" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Gravity
+                </small>
+            </a>
+
+
+            <a href="#/rotationVector" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    RotationVector
+                </small>
+            </a>
+
+            <a href="#/stepCounter" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Step Counter
+                </small>
+            </a>
+
+            <a href="#/gpsSpeed" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    GPS Speed
+                </small>
+            </a>
+
+
+            <a href="#/gpsLocation" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    GPS Location
+                </small>
+            </a>
+
+        </div>
+        <div class="navbar-header pull-right" role="navigation">
+            <a href="#" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp;Log Out</a>
+        </div>
+    </div>
+</div>
 <center><h1>Gyroscope Chart</h1></center>
 <div id="chart"></div>
 <br/><br/>
 <div class="row">
     <div class="col-md-12" ng-show="sensors.length > 0">
 
-    <nav class= "navbar navbar-default" role= "navigation" >
-    <div class= "navbar-header" >
-    <a class="btn btn-lg btn-success" href="#/edit-sensor/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add new sensor</a>
-    </div>
-    </nav>
+    <!--<nav class= "navbar navbar-default" role= "navigation" >-->
+    <!--<div class= "navbar-header" >-->
+    <!--<a class="btn btn-lg btn-success" href="#/edit-sensor/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add new sensor</a>-->
+    <!--</div>-->
+    <!--</nav>-->
         <table class="table table-striped table-bordered">
         <thead>
         <th>Name&nbsp;</th>
@@ -28,7 +119,7 @@
                 <td>{{data.date}}</td>
                 <td>{{data.time}}</td>
                 <td>{{data.userEmail}}</td>
-                <td><a href="#/edit-sensor/{{data._id}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp; Edit Sensor</a></td>
+                <!--<td><a href="#/edit-sensor/{{data._id}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp; Edit Sensor</a></td>-->
             </tr>
         </tbody>
         </table>

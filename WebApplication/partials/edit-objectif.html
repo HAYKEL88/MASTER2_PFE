@@ -1,0 +1,155 @@
+﻿<div class="navbar navbar-default" id="navbar">
+    <div class="container" id="navbar-container">
+        <div class="navbar-header">
+            <a href="#/admins" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Admins List
+                </small>
+            </a>
+
+
+            <a href="#/users" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Users List
+                </small>
+            </a>
+
+
+            <a href="#/sensors" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Sensors Data
+                </small>
+            </a>
+
+
+            <a href="#/objectifs" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Objectifs List
+                </small>
+            </a>
+
+            <a href="#/rules" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Rules List
+                </small>
+            </a>
+
+            <a href="#/reclamations" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Reclamations List
+                </small>
+            </a>
+
+
+            <br/><br/>
+
+
+        </div>
+        <div class="navbar-header pull-right" role="navigation">
+            <a href="#" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp;Log Out</a>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="view">
+    <div class="container">
+        <div class="row">
+        <nav class= "navbar navbar-default" role= "navigation" >
+        <div class= "navbar-header" >
+        <a class= "navbar-brand" href= "#/objectifs"><i class="glyphicon glyphicon-th-large"></i> Objectifs List </a>
+        <a ng-show="objectif._id" class= "navbar-brand" href= "#/edit-objectif/0"><i class="glyphicon glyphicon-plus"></i> Create Objectif </a>
+        <a ng-show="objectif._id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Currently Editing Objectif Number: {{objectif._id}}</a>
+        </div>
+        </nav>
+        <header>
+            <h3>{{title}}</h3>
+        </header>
+        <div class="col-md-12">
+
+<form role="form" name="myForm" class="form-horizontal">
+<div class="row">
+    <div class= "form-group" ng-class="{error: myForm.firstName.$invalid}">
+        <label class= "col-md-2"> Name </label>
+        <div class="col-md-4">
+            <input name="name" ng-model="objectif.name" type= "text" class= "form-control" placeholder="Objectif name" required/>
+            <span ng-show="myForm.name.$dirty && myForm.name.$invalid" class="help-inline">Objectif Name Required</span>
+        </div>
+    </div>
+
+
+
+
+<div class= "form-group">
+    <label class= "col-md-2"> Priority </label>
+    <div class="col-md-4">
+        <input name="name" ng-model="objectif.priority" type= "text" class= "form-control" placeholder="Enter Objectif priority" required/>
+        <span ng-show="myForm.priority.$dirty && myForm.priority.$invalid && !myForm.priority.$error.priority" class="help-inline">Objectif Priority Required</span>
+        <span ng-show="myForm.priority.$error.priority" class="help-inline">Objectif Priority is not valid</span>
+    </div>
+</div>
+
+<div class= "form-group">
+    <label class= "col-md-2"> Comments  </label>
+    <div class="col-md-4">
+        <input name="comments" ng-model="objectif.comments" type= "text" class= "form-control" placeholder="Enter Objectif Comments" required/>
+        <span ng-show="myForm.objectif.$dirty && myForm.objectif.$invalid && !myForm.objectif.$error.objectif" class="help-inline">Objectif Comments Required</span>
+        <span ng-show="myForm.objectif.$error.email" class="help-inline">Objectif Comments is not valid</span>
+    </div>
+</div>
+
+    <div class= "form-group">
+        <label class= "col-md-2"> User Email </label>
+        <div class="col-md-4">
+            <input name="userEmail" ng-model="objectif.userEmail" type= "email" class= "form-control" placeholder="Enter objectif userEmail" required/>
+            <span ng-show="myForm.userEmail.$dirty && myForm.userEmail.$invalid && !myForm.userEmail.$error.age" class="help-inline">Objectif userEmail Required</span>
+            <span ng-show="myForm.userEmail.$error.userEmail" class="help-inline">Objectif userEmail is not valid</span>
+        </div>
+    </div>
+
+<div class= "form-group">
+    <label class= "col-md-2"> Admin </label>
+    <div class="col-md-4">
+        <input name="admin" ng-model="objectif.admin" type= "text" class= "form-control" placeholder="Enter objectif admin" required/>
+        <span ng-show="myForm.admin.$dirty && myForm.admin.$invalid && !myForm.admin.$error.admin" class="help-inline">Objectif admin Required</span>
+        <span ng-show="myForm.admin.$error.admin" class="help-inline">Objectif admin is not valid</span>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class= "form-group">
+    <label class= "col-md-2"></label>
+    <div class="col-md-4">
+    <a href="#/objectifs" class="btn">Cancel</a>
+        <button ng-click="saveObjectif(objectif);"
+                ng-disabled="isClean() || myForm.$invalid"
+                class="btn btn-primary">{{buttonText}}</button>
+        <button ng-click="deleteObjectif(objectif)"
+                ng-show="objectif._id" class="btn btn-warning">Delete</button>
+    </div>
+</div>
+</div>
+</form>
+        </div></div>
+    </div>
+</div>

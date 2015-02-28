@@ -50,7 +50,32 @@ exports.findAll = function(req, res) {
  
 exports.addrule = function(req, res) {
     var rule = req.body;
-    console.log('Adding rule: ' + JSON.stringify(rule));
+    
+	if(rule.adminEmail == undefined)
+	{
+	rule = 
+	{
+        name: req.body.rule.name,
+		description: req.body.rule.description,
+		formule: req.body.rule.formule,
+        adminEmail: req.body.rule.adminEmail
+    }
+	}
+	
+	if(rule._id == "0")
+	{
+	//delete rule._id;
+		rule = 
+		{
+			name: req.body.name,
+			description: req.body.description,
+			formule: req.body.formule,
+			adminEmail: req.body.adminEmail
+		}
+	}
+	
+	
+	
     db.collection('rules', function(err, collection) {
         collection.insert(rule, {safe:true}, function(err, result) {
             if (err) {
@@ -96,8 +121,19 @@ exports.findByAdminEmail = function(req, res) {
 exports.updaterule = function(req, res) {
     var id = req.params.id;
     var rule = req.body;
-    console.log('Updating rule: ' + id);
-    console.log(JSON.stringify(rule));
+    
+	if(rule.adminEmail == undefined)
+	{
+	rule = 
+	{
+        name: req.body.rule.name,
+		description: req.body.rule.description,
+		formule: req.body.rule.formule,
+        adminEmail: req.body.rule.adminEmail
+    }
+	}
+	
+	
     db.collection('rules', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, rule, {safe:true}, function(err, result) {
             if (err) {

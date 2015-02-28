@@ -1,0 +1,30 @@
+<div class="view">
+    <div class="container">
+
+            <section id="content">
+                <form name="myForm" role="form"  ng-submit="submitForm()">
+                    <h1>Login Form</h1>
+                    <div>
+                        <input type="email" placeholder="Email" required  ng-model="adminToSign.email"  />
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" required  ng-model="adminToSign.password" />
+                    </div>
+
+                    <div id="result" ng-bind="result" style="color: #ed1c24; font-size: large"></div>
+                    <div>
+                       <input type="submit" value="Log in" ng-click="Submit" />
+                        <br/>
+                        <a href="#">Lost your password?</a>
+                        <a href="#">Register</a>
+                    </div>
+                </form>
+                <div class="button">
+                    <a href="https://github.com/HAYKEL88/MASTER2_PFE/blob/master/PFE_ANDROID/bin/PFE_ANDROID.apk?raw=true">Download Andoid Application</a>
+                </div>
+            </section>
+
+
+    </div>
+</div>
+

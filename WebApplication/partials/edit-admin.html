@@ -52,11 +52,10 @@
 
         </div>
         <div class="navbar-header pull-right" role="navigation">
-            <a href="#" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp;Log Out</a>
+            <a href="#" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp; Log Out</a>
         </div>
     </div>
 </div>
-
 
 <style type="text/css">
   .form-horizontal input.ng-invalid.ng-dirty {
@@ -72,9 +71,9 @@
         <div class="row">
         <nav class= "navbar navbar-default" role= "navigation" >
         <div class= "navbar-header" >
-        <a class= "navbar-brand" href= "#/users"><i class="glyphicon glyphicon-th-large"></i> Users List </a>
-        <a ng-show="user._id" class= "navbar-brand" href= "#/edit-user/0"><i class="glyphicon glyphicon-plus"></i> Create User </a>
-        <a ng-show="user._id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Currently Editing User Number: {{user._id}}</a>
+        <a class= "navbar-brand" href= "#/admins"><i class="glyphicon glyphicon-th-large"></i> Admins List </a>
+        <a ng-show="admin._id" class= "navbar-brand" href= "#/edit-admin/0"><i class="glyphicon glyphicon-plus"></i> Create Admin </a>
+        <a ng-show="admin._id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Currently Editing Admin Number: {{admin._id}}</a>
         </div>
         </nav>
         <header>
@@ -87,7 +86,7 @@
     <div class= "form-group" ng-class="{error: myForm.firstName.$invalid}">
         <label class= "col-md-2"> First Name </label>
         <div class="col-md-4">
-            <input name="name" ng-model="user.firstName" type= "text" class= "form-control" placeholder="User name" required/>
+            <input name="name" ng-model="admin.firstName" type= "text" class= "form-control" placeholder="Admin name" required/>
             <span ng-show="myForm.firstName.$dirty && myForm.firstName.$invalid" class="help-inline">First Name Required</span>
         </div>
     </div>
@@ -98,7 +97,7 @@
 <div class= "form-group">
     <label class= "col-md-2"> Last Name </label>
     <div class="col-md-4">
-        <input name="lastName" ng-model="user.lastName" type= "text" class= "form-control" placeholder="Enter Last Name" required/>
+        <input name="lastName" ng-model="admin.lastName" type= "text" class= "form-control" placeholder="Enter Last Name" required/>
         <span ng-show="myForm.lastName.$dirty && myForm.lastName.$invalid && !myForm.lastName.$error.email" class="help-inline">Last Name Required</span>
         <span ng-show="myForm.lastName.$error.lastName" class="help-inline">Last Name is not valid</span>
     </div>
@@ -107,59 +106,28 @@
 <div class= "form-group">
     <label class= "col-md-2"> Email address </label>
     <div class="col-md-4">
-        <input name="email" ng-model="user.email" type= "email" class= "form-control" placeholder="Enter email" required/>
+        <input name="email" ng-model="admin.email" type= "email" class= "form-control" placeholder="Enter email" required/>
         <span ng-show="myForm.email.$dirty && myForm.email.$invalid && !myForm.email.$error.email" class="help-inline">Email Required</span>
         <span ng-show="myForm.email.$error.email" class="help-inline">Email is not valid</span>
     </div>
 </div>
 
-    <div class= "form-group">
-        <label class= "col-md-2"> Age </label>
-        <div class="col-md-4">
-            <input name="age" ng-model="user.age" type= "text" class= "form-control" placeholder="Enter user age" required/>
-            <span ng-show="myForm.age.$dirty && myForm.age.$invalid && !myForm.age.$error.age" class="help-inline">Age Required</span>
-            <span ng-show="myForm.age.$error.age" class="help-inline">Age is not valid</span>
-        </div>
-    </div>
-
-<div class= "form-group">
-    <label class= "col-md-2"> Height </label>
-    <div class="col-md-4">
-        <input name="height" ng-model="user.height" type= "text" class= "form-control" placeholder="Enter user height" required/>
-        <span ng-show="myForm.height.$dirty && myForm.height.$invalid && !myForm.height.$error.height" class="help-inline">Height Required</span>
-        <span ng-show="myForm.height.$error.height" class="help-inline">Height is not valid</span>
-    </div>
-</div>
 
 
-<div class= "form-group">
-    <label class= "col-md-2"> Weight </label>
-    <div class="col-md-4">
-        <input name="weight" ng-model="user.weight" type= "text" class= "form-control" placeholder="Enter user weight" required/>
-        <span ng-show="myForm.weight.$dirty && myForm.weight.$invalid && !myForm.weight.$error.weight" class="help-inline">weight Required</span>
-        <span ng-show="myForm.weight.$error.weight" class="help-inline">weight is not valid</span>
-    </div>
-</div>
+
+
+
 
 
 <div class= "form-group">
     <label class= "col-md-2"> Password </label>
     <div class="col-md-4">
-        <input name="password" ng-model="user.password" type= "text" class= "form-control" placeholder="Enter user password" required/>
+        <input name="password" ng-model="admin.password" type= "text" class= "form-control" placeholder="Enter admin password" required/>
         <span ng-show="myForm.password.$dirty && myForm.password.$invalid && !myForm.password.$error.email" class="help-inline">Password Required</span>
         <span ng-show="myForm.password.$error.password" class="help-inline">Password is not valid</span>
     </div>
 </div>
 
-
-<div class= "form-group">
-    <label class= "col-md-2"> Gender </label>
-    <div class="col-md-4">
-        <input name="gender" ng-model="user.sex" type= "text" class= "form-control" placeholder="Enter user gender" required/>
-        <span ng-show="myForm.gender.$dirty && myForm.gender.$invalid && !myForm.gender.$error.gender" class="help-inline">gender Required</span>
-        <span ng-show="myForm.gender.$error.gender" class="help-inline">Age is not valid</span>
-    </div>
-</div>
 
 
 
@@ -171,12 +139,12 @@
 <div class= "form-group">
     <label class= "col-md-2"></label>
     <div class="col-md-4">
-    <a href="#/users" class="btn">Cancel</a>
-        <button ng-click="saveUser(user);"
+    <a href="#/admins" class="btn">Cancel</a>
+        <button ng-click="saveAdmin(admin);"
                 ng-disabled="isClean() || myForm.$invalid"
                 class="btn btn-primary">{{buttonText}}</button>
-        <button ng-click="deleteUser(user)"
-                ng-show="user._id" class="btn btn-warning">Delete</button>
+        <button ng-click="deleteAdmin(admin)"
+                ng-show="admin._id" class="btn btn-warning">Delete</button>
     </div>
 </div>
 </div>

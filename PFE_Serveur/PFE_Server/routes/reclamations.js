@@ -85,8 +85,27 @@ exports.findAll = function(req, res) {
  
 exports.addreclamation = function(req, res) {
     var reclamation = req.body;
-	console.log(reclamation);
-    console.log('Adding reclamation: ' + JSON.stringify(reclamation));
+	
+	if(reclamation.userEmail == undefined)
+	{
+	reclamation = 
+	{
+        description: req.body.reclamation.description,
+        userEmail: req.body.reclamation.userEmail
+    }
+	}
+	
+	if(reclamation._id == "0")
+	{
+	//delete reclamation._id;
+		reclamation = 
+		{
+			description: req.body.description,
+			userEmail: req.body.userEmail
+		}
+	}
+	
+	
     db.collection('reclamations', function(err, collection) {
         collection.insert(reclamation, {safe:true}, function(err, result) {
             if (err) {
@@ -106,8 +125,18 @@ exports.addreclamation = function(req, res) {
 exports.updatereclamation = function(req, res) {
     var id = req.params.id;
     var reclamation = req.body;
-    console.log('Updating reclamation: ' + id);
-    console.log(JSON.stringify(reclamation));
+    
+	
+	if(reclamation.userEmail == undefined)
+	{
+	reclamation = 
+	{
+        description: req.body.reclamation.description,
+        userEmail: req.body.reclamation.userEmail
+    }
+	}
+	
+	
     db.collection('reclamations', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, reclamation, {safe:true}, function(err, result) {
             if (err) {

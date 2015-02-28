@@ -51,7 +51,34 @@ exports.findAll = function(req, res) {
  
 exports.addservice = function(req, res) {
     var service = req.body;
-    console.log('Adding service: ' + JSON.stringify(service));
+    
+	
+	if(service.adminEmail == undefined)
+	{
+	service = 
+	{
+        name: req.body.service.name,
+		description: req.body.service.description,
+		link: req.body.service.link,
+        adminEmail: req.body.service.adminEmail
+    }
+	}
+	
+	
+	if(service._id == "0")
+	{
+	//delete service._id;
+		service = 
+		{
+			name: req.body.name,
+			description: req.body.description,
+			link: req.body.link,
+			adminEmail: req.body.adminEmail
+		}
+	}
+	
+	
+	
     db.collection('Services', function(err, collection) {
         collection.insert(service, {safe:true}, function(err, result) {
             if (err) {
@@ -71,8 +98,19 @@ exports.addservice = function(req, res) {
 exports.updateservice = function(req, res) {
     var id = req.params.id;
     var service = req.body;
-    console.log('Updating service: ' + id);
-    console.log(JSON.stringify(service));
+    
+	
+	if(service.adminEmail == undefined)
+	{
+	service = 
+	{
+        name: req.body.service.name,
+		description: req.body.service.description,
+		link: req.body.service.link,
+        adminEmail: req.body.service.adminEmail
+    }
+	}
+	
     db.collection('Services', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, service, {safe:true}, function(err, result) {
             if (err) {
@@ -89,7 +127,20 @@ exports.updateservice = function(req, res) {
 
 exports.deleteservice = function(req, res) {
     var id = req.params.id;
-    console.log('Deleting service: ' + id);
+    
+	
+	if(service.adminEmail == undefined)
+	{
+	service = 
+	{
+        name: req.body.service.name,
+		description: req.body.service.description,
+		link: req.body.service.link,
+        adminEmail: req.body.service.adminEmail
+    }
+	}
+	
+	
     db.collection('Services', function(err, collection) {
         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {

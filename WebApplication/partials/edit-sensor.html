@@ -1,0 +1,171 @@
+﻿<div class="navbar navbar-default" id="navbar">
+    <div class="container" id="navbar-container">
+        <div class="navbar-header">
+            <a href="#/admins" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Admins List
+                </small>
+            </a>
+
+
+            <a href="#/users" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Users List
+                </small>
+            </a>
+
+
+            <a href="#/sensors" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Sensors Data
+                </small>
+            </a>
+
+
+            <a href="#/objectifs" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Objectifs List
+                </small>
+            </a>
+
+            <a href="#/rules" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Rules List
+                </small>
+            </a>
+
+            <a href="#/reclamations" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Reclamations List
+                </small>
+            </a>
+
+
+            <br/><br/>
+
+
+        </div>
+        <div class="navbar-header pull-right" role="navigation">
+            <a href="#" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp;Log Out</a>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="view">
+    <div class="container">
+        <div class="row">
+        <nav class= "navbar navbar-default" role= "navigation" >
+        <div class= "navbar-header" >
+        <a class= "navbar-brand" href= "#/sensors"><i class="glyphicon glyphicon-th-large"></i> Sensors List </a>
+        <a ng-show="sensor._id" class= "navbar-brand" href= "#/edit-sensor/0"><i class="glyphicon glyphicon-plus"></i> Create Sensor </a>
+        <a ng-show="sensor._id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Currently Editing Sensor Number: {{sensor._id}}</a>
+        </div>
+        </nav>
+        <header>
+            <h3>{{title}}</h3>
+        </header>
+        <div class="col-md-12">
+
+<form role="form" name="myForm" class="form-horizontal">
+<div class="row">
+
+
+    <div class= "form-group" ng-class="{error: myForm.name.$invalid}">
+        <label class= "col-md-2">  Name </label>
+        <div class="col-md-4">
+            <input name="name" ng-model="sensor.name" type= "text" class= "form-control" placeholder="Sensor name" required/>
+            <span ng-show="myForm.name.$dirty && myForm.name.$invalid" class="help-inline">Sensor Name Required</span>
+        </div>
+    </div>
+
+    <div class= "form-group" ng-class="{error: myForm.value.$invalid}">
+        <label class= "col-md-2">  Value </label>
+        <div class="col-md-4">
+            <input name="value" ng-model="sensor.value" type= "text" class= "form-control" placeholder="Sensor value" required/>
+            <span ng-show="myForm.value.$dirty && myForm.value.$invalid" class="help-inline">Sensor value Required</span>
+        </div>
+    </div>
+
+    <div class= "form-group" ng-class="{error: myForm.date.$invalid}">
+        <label class= "col-md-2">  date </label>
+        <div class="col-md-4">
+            <input name="name" ng-model="sensor.date" type= "text" class= "form-control" placeholder="Sensor date" required/>
+            <span ng-show="myForm.date.$dirty && myForm.date.$invalid" class="help-inline">Sensor date Required</span>
+        </div>
+    </div>
+
+    <div class= "form-group" ng-class="{error: myForm.time.$invalid}">
+        <label class= "col-md-2">  Time </label>
+        <div class="col-md-4">
+            <input name="time" ng-model="sensor.time" type= "text" class= "form-control" placeholder="Sensor time" required/>
+            <span ng-show="myForm.time.$dirty && myForm.time.$invalid" class="help-inline">Sensor time Required</span>
+        </div>
+    </div>
+
+
+    <div class= "form-group" ng-class="{error: myForm.accuracy.$invalid}">
+        <label class= "col-md-2">  Accuracy </label>
+        <div class="col-md-4">
+            <input name="accuracy" ng-model="sensor.accuracy" type= "text" class= "form-control" placeholder="Sensor accuracy" required/>
+            <span ng-show="myForm.accuracy.$dirty && myForm.accuracy.$invalid" class="help-inline">Sensor accuracy Required</span>
+        </div>
+    </div>
+
+    <div class= "form-group" ng-class="{error: myForm.timestamp.$invalid}">
+        <label class= "col-md-2">  Timestamp </label>
+        <div class="col-md-4">
+            <input name="name" ng-model="sensor.timestamp" type= "text" class= "form-control" placeholder="Sensor timestamp" required/>
+            <span ng-show="myForm.timestamp.$dirty && myForm.timestamp.$invalid" class="help-inline">Sensor timestamp Required</span>
+        </div>
+    </div>
+
+    <div class= "form-group" ng-class="{error: myForm.userEmail.$invalid}">
+        <label class= "col-md-2">  User Email </label>
+        <div class="col-md-4">
+            <input name="userEmail" ng-model="sensor.userEmail" type= "email" class= "form-control" placeholder="Sensor user Email" required/>
+            <span ng-show="myForm.userEmail.$dirty && myForm.userEmail.$invalid" class="help-inline">Sensor user Email Required</span>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class= "form-group">
+    <label class= "col-md-2"></label>
+    <div class="col-md-4">
+    <a href="#/sensors" class="btn">Cancel</a>
+        <button ng-click="saveSensor(sensor);"
+                ng-disabled="isClean() || myForm.$invalid"
+                class="btn btn-primary">{{buttonText}}</button>
+        <button ng-click="deleteSensor(sensor)"
+                ng-show="sensor._id" class="btn btn-warning">Delete</button>
+    </div>
+</div>
+</div>
+</form>
+        </div></div>
+    </div>
+</div>

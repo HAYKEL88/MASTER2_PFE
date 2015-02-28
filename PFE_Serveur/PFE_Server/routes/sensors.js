@@ -111,8 +111,41 @@ exports.findAll = function(req, res) {
  
 exports.addsensor = function(req, res) {
     var sensor = req.body;
-	console.log(sensor);
-    console.log('Adding sensor: ' + JSON.stringify(sensor));
+	
+	
+	if(sensor.userEmail == undefined)
+	{
+	sensor = 
+	{
+		name: req.body.sensor.name,
+        value: req.body.sensor.value,
+        accuracy: req.body.sensor.accuracy,
+        timestamp: req.body.sensor.timestamp,
+		date: req.body.sensor.date,
+        time: req.body.sensor.time,
+        userEmail: req.body.sensor.userEmail
+    }
+	}
+	
+	
+	if(sensor._id == "0")
+	{
+	//delete sensor._id;
+		sensor = 
+		{
+			name: req.body.name,
+			value: req.body.value,
+			accuracy: req.body.accuracy,
+			timestamp: req.body.timestamp,
+			date: req.body.date,
+			time: req.body.time,
+			userEmail: req.body.userEmail
+		}
+	}
+	
+	
+	
+	
     db.collection('sensors', function(err, collection) {
         collection.insert(sensor, {safe:true}, function(err, result) {
             if (err) {
@@ -132,8 +165,23 @@ exports.addsensor = function(req, res) {
 exports.updatesensor = function(req, res) {
     var id = req.params.id;
     var sensor = req.body;
-    console.log('Updating sensor: ' + id);
-    console.log(JSON.stringify(sensor));
+    
+	
+	if(sensor.userEmail == undefined)
+	{
+	sensor = 
+	{
+		name: req.body.sensor.name,
+        value: req.body.sensor.value,
+        accuracy: req.body.sensor.accuracy,
+        timestamp: req.body.sensor.timestamp,
+		date: req.body.sensor.date,
+        time: req.body.sensor.time,
+        userEmail: req.body.sensor.userEmail
+    }
+	}
+	
+	
     db.collection('sensors', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, sensor, {safe:true}, function(err, result) {
             if (err) {

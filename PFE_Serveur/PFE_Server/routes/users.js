@@ -142,13 +142,43 @@ exports.findAll = function(req, res) {
 exports.adduser = function(req, res) {
     var user = req.body;
 	
+	if(user.email == undefined)
+	{
+	user = 
+	{
+        firstName: req.body.user.firstName,
+        lastName: req.body.user.lastName,
+        age: req.body.user.age,
+        sex: req.body.user.sex,
+		height: req.body.user.height,
+        weight: req.body.user.weight,
+        email: req.body.user.email,
+        password: req.body.user.password
+    }
+	}
+	console.log(user.firstName);
+	if(user._id == "0")
+	{
+	//delete user._id;
+		user = 
+		{
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			age: req.body.age,
+			sex: req.body.sex,
+			height: req.body.height,
+			weight: req.body.weight,
+			email: req.body.email,
+			password: req.body.password
+		}
+	}
 	
-	
+	console.log(user);
 	
 	var result;
 	// Verify if user Email exist
 	db.collection('users', function(err, collection) {
-        collection.find({'email': req.body.email}).toArray( function(err, item) {
+        collection.find({'email': user.email}).toArray( function(err, item) {
             if (err) {
                 
             } else {
@@ -160,15 +190,10 @@ exports.adduser = function(req, res) {
 	
 	if(result == undefined)
 	{
-	res.send({'Error':'User Email exist, Please shoose another'});
-	
-	}
-	else
-	{
-    db.collection('users', function(err, collection) {
+	db.collection('users', function(err, collection) {
         collection.insert(user, {safe:true}, function(err, result) {
             if (err) {
-                //res.send({'error':'An error has occurred'});
+                res.send({'error':'An error has occurred'});
 				res.send({'Error':'An error has occurred'});
             } else {
                 console.log('Success: ' + JSON.stringify(result[0]));
@@ -177,6 +202,12 @@ exports.adduser = function(req, res) {
             }
         });
     });
+	
+	
+	}
+	else
+	{
+    res.send({'Error':'User Email exist, Please shoose another'});
 	
 	}
 }
@@ -187,9 +218,24 @@ exports.updateuser = function(req, res) {
     var id = req.params.id;
     var user = req.body;
      
-
-
+	console.log(user.email);
 	
+	if(user.email == undefined)
+	{
+	user = 
+	{
+        firstName: req.body.user.firstName,
+        lastName: req.body.user.lastName,
+        age: req.body.user.age,
+        sex: req.body.user.sex,
+		height: req.body.user.height,
+        weight: req.body.user.weight,
+        email: req.body.user.email,
+        password: req.body.user.password
+    }
+	
+	
+	}	
 	
     db.collection('users', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, user, {safe:true}, function(err, result) {

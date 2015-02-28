@@ -1,0 +1,133 @@
+﻿<div class="navbar navbar-default" id="navbar">
+    <div class="container" id="navbar-container">
+        <div class="navbar-header">
+            <a href="#/admins" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Admins List
+                </small>
+            </a>
+
+
+            <a href="#/users" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Users List
+                </small>
+            </a>
+
+
+            <a href="#/sensors" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Sensors Data
+                </small>
+            </a>
+
+
+            <a href="#/objectifs" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Objectifs List
+                </small>
+            </a>
+
+            <a href="#/rules" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Rules List
+                </small>
+            </a>
+
+            <a href="#/reclamations" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-log-out"></i>
+                    Reclamations List
+                </small>
+            </a>
+
+
+            <br/><br/>
+
+
+        </div>
+        <div class="navbar-header pull-right" role="navigation">
+            <a href="#" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp;Log Out</a>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="view">
+    <div class="container">
+        <div class="row">
+        <nav class= "navbar navbar-default" role= "navigation" >
+        <div class= "navbar-header" >
+        <a class= "navbar-brand" href= "#/reclamations"><i class="glyphicon glyphicon-th-large"></i> Reclamations List </a>
+        <a ng-show="reclamation._id" class= "navbar-brand" href= "#/edit-reclamation/0"><i class="glyphicon glyphicon-plus"></i> Create Reclamation </a>
+        <a ng-show="reclamation._id" class= "navbar-brand pull-right"><i class="glyphicon glyphicon-edit"></i> Currently Editing Reclamation Number: {{reclamation._id}}</a>
+        </div>
+        </nav>
+        <header>
+            <h3>{{title}}</h3>
+        </header>
+        <div class="col-md-12">
+
+<form role="form" name="myForm" class="form-horizontal">
+<div class="row">
+
+
+
+
+
+<div class= "form-group">
+    <label class= "col-md-2" > Reclamation Description </label>
+    <div class="col-md-4">
+        <textarea name="description" ng-model="reclamation.description" class= "form-control" placeholder="Enter Reclamation Description" required></textarea>
+        <span ng-show="myForm.description.$dirty && myForm.description.$invalid && !myForm.description.$error.description" class="help-inline">Reclamation DescriptionRequired</span>
+        <span ng-show="myForm.description.$error.description" class="help-inline">Reclamation Description is not valid</span>
+    </div>
+</div>
+
+<div class= "form-group">
+    <label class= "col-md-2"> Reclamation User Email </label>
+    <div class="col-md-4">
+        <input name="userEmail" ng-model="reclamation.userEmail" type= "email" class= "form-control" placeholder="Enter Reclamation User Email" required/>
+        <span ng-show="myForm.userEmail.$dirty && myForm.userEmail.$invalid && !myForm.userEmail.$error.userEmail" class="help-inline">Reclamation User Email Required</span>
+        <span ng-show="myForm.userEmail.$error.userEmail" class="help-inline">Reclamation User Email is not valid</span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class= "form-group">
+    <label class= "col-md-2"></label>
+    <div class="col-md-4">
+    <a href="#/reclamations" class="btn">Cancel</a>
+        <button ng-click="saveReclamation(reclamation);"
+                ng-disabled="isClean() || myForm.$invalid"
+                class="btn btn-primary">{{buttonText}}</button>
+        <button ng-click="deleteReclamation(reclamation)"
+                ng-show="reclamation._id" class="btn btn-warning">Delete</button>
+    </div>
+</div>
+</div>
+</form>
+        </div></div>
+    </div>
+</div>
