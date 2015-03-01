@@ -67,12 +67,15 @@ public class UpdateUserActivity extends Activity {
         rbWoman = (RadioButton) findViewById(R.id.rbWoman);
         tvResponse = (TextView) findViewById(R.id.tvResponse);
 
+
         etFN.setText(userSession.getUser().getFirstName());
         etLN.setText(userSession.getUser().getLastName());
         etAge.setText(userSession.getUser().getAge());
         etEmail.setText(userSession.getUser().getEmail());
         etHeight.setText(userSession.getUser().getHeight());
         etWeight.setText(userSession.getUser().getWeight());
+
+        etEmail.setEnabled(false);
 
         if(userSession.getUser().getSex().equals("Woman"))
         {

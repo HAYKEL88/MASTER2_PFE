@@ -61,6 +61,9 @@ public class UpdateAdminActivity extends Activity {
         etLN.setText(userSession.getAdmin().getLastName());
         etEmail.setText(userSession.getAdmin().getEmail());
 
+        etEmail.setEnabled(false);
+
+
 
 
 
