@@ -2,6 +2,8 @@ var express = require('express'),
     user = require('./routes/users'),
 	rule = require('./routes/rules'),
 	objectif = require('./routes/objectifs'),
+	alerte = require('./routes/alertes'),
+	recommendation = require('./routes/recommendations'),
 	admin = require('./routes/admins'),
 	sensor = require('./routes/sensors'),
 	reclamation = require('./routes/reclamations'),
@@ -63,6 +65,24 @@ app.get('/objectifs', objectif.findObjectifsAdmin);
 app.put('/objectifs/:id', objectif.updateObjectif);
 app.post('/objectifs/:id', objectif.updateObjectif);
 app.delete('/objectifs/:id', objectif.deleteObjectif);
+
+//Alertes
+app.get('/alertes', alerte.findAll);
+app.get('/alertes/:id', alerte.findById);
+app.get('/alertes/email/:userEmail', alerte.findByUserEmail);
+app.post('/alertes', alerte.addAlerte);
+app.put('/alertes/:id', alerte.updateAlerte);
+app.post('/alertes/:id', alerte.updateAlerte);
+app.delete('/alertes/:id', alerte.deleteAlerte);
+
+//Recommendations
+app.get('/recommendations', recommendation.findAll);
+app.get('/recommendations/:id', recommendation.findById);
+app.get('/recommendations/email/:userEmail', recommendation.findByUserEmail);
+app.post('/recommendations', recommendation.addRecommendation);
+app.put('/recommendations/:id', recommendation.updateRecommendation);
+app.post('/recommendations/:id', recommendation.updateRecommendation);
+app.delete('/recommendations/:id', recommendation.deleteRecommendation);
 
 //Services
 app.get('/services', service.findAll);

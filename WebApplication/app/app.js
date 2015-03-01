@@ -147,6 +147,18 @@ app.factory("services", ['$http', function($http) {
         });
     };
 
+    //Alertes
+    obj.getAlertes = function(){
+        return $http.get(serviceBase + 'alertes/email/'+userSession.email);
+    }
+
+
+    //Recommendations
+    obj.getRecommendations = function(){
+        return $http.get(serviceBase + 'recommendations/email/'+userSession.email);
+    }
+
+
     //Sensor
     obj.getSensors = function(){
         return $http.get(serviceBase + 'sensors');
@@ -680,6 +692,35 @@ app.controller('accelerometerCtrl', function ($scope, services,$location) {
 });
 
 
+
+//Alertes
+app.controller('alertesCtrl', function ($scope, services,$location) {
+    if(userSession =='') {
+        $location.url('/');
+    }
+    else {
+        services.getAlertes().then(function (data) {
+            //console.log(data.data.sensors)
+            $scope.alertes = data.data.alertes;
+        });
+    }
+});
+
+
+//Recommendations
+app.controller('recommendationsCtrl', function ($scope, services,$location) {
+    if(userSession =='') {
+        $location.url('/');
+    }
+    else {
+        services.getRecommendations().then(function (data) {
+            $scope.recommendations = data.data.recommendations;
+        });
+    }
+});
+
+
+
 // editUserCtrl
 app.controller('editUserCtrl', function ($scope, $rootScope, $location, $routeParams, services, user) {
 
@@ -1068,6 +1109,16 @@ app.config(['$routeProvider',
             title: 'GPS Location',
             templateUrl: 'partials/GpsLocation.html',
             controller: 'gpsLocationCtrl'
+        })
+        .when('/alertes', {
+            title: 'Alertes',
+            templateUrl: 'partials/alertes.html',
+            controller: 'alertesCtrl'
+        })
+        .when('/recommendations', {
+            title: 'Recommendations',
+            templateUrl: 'partials/recommendations.html',
+            controller: 'recommendationsCtrl'
         })
         .when('/edit-user/:userID', {
             title: 'Edit Users',
