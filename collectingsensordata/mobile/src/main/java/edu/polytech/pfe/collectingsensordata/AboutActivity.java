@@ -1,39 +1,75 @@
 package edu.polytech.pfe.collectingsensordata;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
-public class AboutActivity extends ActionBarActivity {
+        import android.app.Activity;
+        import android.app.Fragment;
+        import android.content.pm.PackageInfo;
+        import android.content.pm.PackageManager.NameNotFoundException;
+        import android.os.Bundle;
+        import android.text.Html;
+        import android.text.method.LinkMovementMethod;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.TextView;
+
+
+public class AboutActivity extends Activity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_about, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (savedInstanceState == null)
+        {
+            getFragmentManager().beginTransaction()
+                    .add(R.id.container, new AboutFragment())
+                    .commit();
         }
 
-        return super.onOptionsItemSelected(item);
+    }
+
+
+    public static class AboutFragment extends Fragment
+    {
+
+        public AboutFragment()
+        {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState)
+        {
+            View rootView = inflater.inflate(R.layout.fragment_about, container, false);
+
+            ((TextView) rootView.findViewById(R.id.oss_content)).setText(Html.fromHtml(getResources().getString(R.string.about_open_source_content)));
+            ((TextView) rootView.findViewById(R.id.oss_content)).setMovementMethod(LinkMovementMethod.getInstance());
+
+            ((TextView) rootView.findViewById(R.id.about_github_content)).setText(Html.fromHtml(getResources().getString(R.string.about_github_content)));
+            ((TextView) rootView.findViewById(R.id.about_github_content)).setMovementMethod(LinkMovementMethod.getInstance());
+
+
+            ((TextView) rootView.findViewById(R.id.dev_content)).setText(Html.fromHtml(getResources().getString(R.string.about_development_content)));
+            ((TextView) rootView.findViewById(R.id.dev_content)).setMovementMethod(LinkMovementMethod.getInstance());
+
+
+
+            try
+            {
+                PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
+                ((TextView) rootView.findViewById(R.id.header)).setText(getResources().getString(R.string.app_name) + " v." + pInfo.versionName);
+            }
+            catch (NameNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+
+
+            return rootView;
+        }
     }
 }

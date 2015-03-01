@@ -79,10 +79,10 @@ public class WelcomeActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void contactUs(View view) {
-        Intent intent = new Intent(this, ContactUsActivity.class);
-        startActivity(intent);
-    }
+//    public void contactUs(View view) {
+//        Intent intent = new Intent(this, ContactUsActivity.class);
+//        startActivity(intent);
+//    }
 
 
 
