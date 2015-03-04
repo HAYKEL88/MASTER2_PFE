@@ -181,66 +181,80 @@ var populateDB = function() {
     var recommendations = [
     {
         description: "First Recommendation",
+        priority: "LOW",
+		date: "21/02/2015",
+        time: "10:17:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        description: "Second Recommendation",
         priority: "MEDIUM",
+		date: "22/02/2015",
+        time: "12:13:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        description: "Third Recommendation",
+        priority: "HIGH",
 		date: "23/02/2015",
-        time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        time: "18:15:19",
+        userEmail: "pfe@pfe.pfe"
     },
 	{
         description: "Ensure a good body",
         priority: "HIGH",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "pfe@pfe.pfe"
     },
 	{
         description: "Ensure a good body",
         priority: "LOW",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "haykel.ouhichi@esprit.tn"
     },
 	{
         description: "Ensure a good body",
         priority: "MEDIUM",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "haykel.ouhichi@esprit.tn"
     },
 	{
         description: "Ensure a good body",
         priority: "MEDIUM",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "haykel.ouhichi@esprit.tn"
     },
 	{
         description: "Ensure a good body",
         priority: "MEDIUM",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "haykel.ouhichi@esprit.tn"
     },
 	{
         description: "Ensure a good body",
         priority: "MEDIUM",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "haykel.ouhichi@esprit.tn"
     },
 	{
         description: "Ensure a good body",
         priority: "MEDIUM",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "haykel.ouhichi@esprit.tn"
     },
 	{
         description: "Ensure a good body",
         priority: "MEDIUM",
 		date: "23/02/2015",
         time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit"
+        userEmail: "haykel.ouhichi@esprit.tn"
     }];
  
     db.collection('recommendations', function(err, collection) {

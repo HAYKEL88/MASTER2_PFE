@@ -118,7 +118,8 @@ public class SensorReceiverService extends WearableListenerService {
 
         try {
             // Send Datas every 10 minutes
-            if (((diffMinutes > 9) && (diffHours == 0)) || ((diffMinutes == (-50)) && (diffHours == 1))) {
+            //if (((diffMinutes > 9) && (diffHours == 0)) || ((diffMinutes == (-50)) && (diffHours == 1))) {
+            if (((diffMinutes > 0) && (diffHours == 0)) || ((diffMinutes == (-59)) && (diffHours == 1))) {
                 int i = 0;
                 for (i = 0; i < sensorManager.getSensors().size(); i++) {
 
@@ -210,10 +211,10 @@ public class SensorReceiverService extends WearableListenerService {
         private static final String TAG = "WebServiceTask";
 
         // connection timeout, in milliseconds (waiting to connect)
-        private static final int CONN_TIMEOUT = 3000;
+        private static final int CONN_TIMEOUT = 10000;
 
         // socket timeout, in milliseconds (waiting for data)
-        private static final int SOCKET_TIMEOUT = 5000;
+        private static final int SOCKET_TIMEOUT = 10000;
 
         private int taskType = GET_TASK;
         private Context mContext = null;

@@ -161,10 +161,10 @@ public class AddObjectifAdminActivity extends Activity {
         private static final String TAG = "WebServiceTask";
 
         // connection timeout, in milliseconds (waiting to connect)
-        private static final int CONN_TIMEOUT = 3000;
+        private static final int CONN_TIMEOUT = 10000;
 
         // socket timeout, in milliseconds (waiting for data)
-        private static final int SOCKET_TIMEOUT = 5000;
+        private static final int SOCKET_TIMEOUT = 10000;
 
         private int taskType = GET_TASK;
         private Context mContext = null;

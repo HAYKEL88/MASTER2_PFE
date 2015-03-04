@@ -351,7 +351,7 @@ var populateDB = function() {
         sex: "Man",
 		height: "180",
         weight: "75",
-        email: "micbuffa@gmail.com",
+        email: "michelbuffa@gmail.com",
         password: "michel"
     }];
  

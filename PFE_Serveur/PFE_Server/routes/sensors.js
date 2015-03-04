@@ -227,8 +227,26 @@ var populateDB = function() {
         accuracy: "2",
         timestamp: "1424654082125547860",
 		date: "23/02/2015",
-        time: "02:17:19",
-        userEmail: "haykel.ouhichi@esprit.tn"
+        time: "02:10:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "77.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:11:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "77.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:12:19",
+        userEmail: "pfe@pfe.pfe"
     },
 	{
         name: "Heart Rate",
@@ -236,8 +254,116 @@ var populateDB = function() {
         accuracy: "2",
         timestamp: "1424654082125547860",
 		date: "23/02/2015",
-        time: "02:18:39",
-        userEmail: "haykel.ouhichi@esprit.tn"
+        time: "02:13:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "78.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:14:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "78.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:15:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "79.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:16:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "79.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:17:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "78.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:18:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "77.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:19:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "76.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:20:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "80.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:21:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "80.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:22:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "80.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:23:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "80.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:24:19",
+        userEmail: "pfe@pfe.pfe"
+    },
+	{
+        name: "Heart Rate",
+        value: "77.0",
+        accuracy: "2",
+        timestamp: "1424654082125547860",
+		date: "23/02/2015",
+        time: "02:25:39",
+        userEmail: "pfe@pfe.pfe"
     }];
  
     db.collection('sensors', function(err, collection) {

@@ -254,12 +254,6 @@ exports.deleteadmin = function(req, res) {
 var populateDB = function() {
  
     var admins = [
-    {
-        firstName: "pfe",
-        lastName: "PFE",
-        email: "pfe@pfe.pfe",
-        password: "pfe"
-    },
 	{
         firstName: "admin",
         lastName: "admin",

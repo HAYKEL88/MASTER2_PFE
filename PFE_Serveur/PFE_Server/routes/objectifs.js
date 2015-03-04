@@ -197,63 +197,63 @@ var populateDB = function() {
         name: "Reduce my weignt",
         priority: "MEDIUM",
         comments: "I'm on a diet and I need to lose weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "pfe@pfe.pfe",
 		admin: "1"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "pfe@pfe.pfe",
 		admin: "1"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "haykel.ouhichi@esprit.tn",
 		admin: "0"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "haykel.ouhichi@esprit.tn",
 		admin: "0"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "haykel.ouhichi@esprit.tn",
 		admin: "0"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "haykel.ouhichi@esprit.tn",
 		admin: "0"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "haykel.ouhichi@esprit.tn",
 		admin: "0"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "haykel.ouhichi@esprit.tn",
 		admin: "0"
     },
 	{
         name: "Ensure a good body",
         priority: "MEDIUM",
         comments: "I am an athlete and I have to maintain an ideal weight",
-        userEmail: "haykel.ouhichi@esprit",
+        userEmail: "haykel.ouhichi@esprit.tn",
 		admin: "0"
     }];
  
